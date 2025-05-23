@@ -8,7 +8,7 @@ type SpeechBubbleProps = {
   className?: string;
 };
 
-export default function SpeechBubble({ text, speed = 80, className }: SpeechBubbleProps) {
+export default function SpeechBubble({ text, speed = 100, className }: SpeechBubbleProps) {
   const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {

@@ -1,11 +1,37 @@
+"use client";
+
 import Illustration from "@/components/Illustration";
+import SelectDay from "@/components/SelectDay";
 import SpeechBubble from "@/components/SpeechBubble";
+import Welcome from "@/components/Welcome";
 import { MESSAGES } from "@/constants/messages";
+import { fetchMovies } from "@/lib/movies";
 import { cn } from "@/lib/utils";
+import { MovieSession, Room } from "@/types/movie";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  // Get messages from the server
-  const messages = MESSAGES;
+  const [step, setStep] = useState(0);
+
+  // Estados para armazenar as escolhas
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [selectedMovie, setSelectedMovie] = useState<MovieSession | null>(null);
+  const [selectedSession, setSelectedSession] = useState<{ room: Room; time: string } | null>(null);
+
+  // Dados dos filmes
+  const [movies, setMovies] = useState<MovieSession[]>([]);
+
+  useEffect(() => {
+    fetchMovies().then(setMovies);
+  }, []);
+
+  // Obter os dias únicos de todos os filmes
+  const allDays = Array.from(new Set(movies.flatMap(m => m.dates))).sort();
+
+  // Funções para avançar e retroceder os passos
+  const nextStep = () => setStep(s => s + 1);
+  const prevStep = () => setStep(s => s - 1);
+
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden">
@@ -20,25 +46,62 @@ export default function Home() {
         )}
       >
         <main className="relative w-full h-full flex flex-col items-center justify-center text-center p-6">
-          <SpeechBubble speed={60} text={messages.cinema_invitation} />
+          {step === 0 && (
+            <Welcome
+              onNext={nextStep}
+            />
+          )}
 
-          {/* Conteúdo */}
-          <div className="mt-64">
-            <h1 className="text-2xl font-bold text-primary mb-2">Olá! Sou Dora, a Aventureira!</h1>
-            <p className="text-base text-gray-800 mb-6">Vamos ao cinema? 🎬</p>
-            <button className="bg-primary text-white px-6 py-2 rounded-full text-lg shadow-md hover:bg-primary transition">
-              Ver Agenda
-            </button>
-          </div>
+          {step === 1 && (
+            <SelectDay
+              days={allDays}
+              onSelectDay={day => {
+                setSelectedDay(day);
+                nextStep();
+              }}
+              onBack={prevStep}
+            />
+          )}
 
-          {/* Ilustração */}
-          <Illustration
-            src="dora.png"
-            width={180}
-          />
+          {/* {step === 2 && selectedDay && (
+        <SelectMovie
+          movies={movies}
+          day={selectedDay}
+          selectedMovie={selectedMovie}
+          onSelectMovie={movie => {
+            setSelectedMovie(movie);
+            nextStep();
+          }}
+          onBack={prevStep}
+        />
+      )}
+
+      {step === 3 && selectedMovie && (
+        <SelectSession
+          movie={selectedMovie}
+          day={selectedDay!}
+          selectedSession={selectedSession}
+          onSelectSession={session => {
+            setSelectedSession(session);
+            nextStep();
+          }}
+          onBack={prevStep}
+        />
+      )}
+
+      {step === 4 && selectedDay && selectedMovie && selectedSession && (
+        <Summary
+          day={selectedDay}
+          movie={selectedMovie}
+          session={selectedSession}
+          onConfirm={() => alert("Vamos ao cinema! 🎬")}
+          onBack={prevStep}
+        />
+      )} */}
 
         </main>
       </div>
     </div>
   );
 }
+
