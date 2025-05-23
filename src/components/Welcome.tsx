@@ -1,14 +1,12 @@
 import { MESSAGES } from "@/constants/messages";
 import DoraSpeaking from "./DoraSpeaking";
 import Button from "./Button";
+import DoraStep from "./DoraStep";
 
 export default function Welcome({ onNext }: { onNext: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center h-full">
-      <DoraSpeaking text={MESSAGES.greeting} type="welcome"/>
-      <Button onClick={onNext}>
-        Vamos lá!
-      </Button>
-    </div>
+    <DoraStep text={MESSAGES.greeting} type="welcome">
+      <Button onClick={onNext}>Vamos lá!</Button>
+    </DoraStep>
   );
 }

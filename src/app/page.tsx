@@ -10,6 +10,7 @@ import Welcome from "@/components/Welcome";
 import { fetchMovies } from "@/lib/movies";
 import { cn } from "@/lib/utils";
 import { MovieSession, Room } from "@/types/movie";
+import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -67,63 +68,126 @@ export default function Home() {
         )}
       >
         <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6">
-          {step === 0 && (
-            <Welcome
-              onNext={nextStep}
-            />
-          )}
-
-          {step === 1 && (
-            <SelectDay
-              days={allDays}
-              onSelectDay={handleSelectDay}
-            />
-          )}
-
-          {otherDay && <OtherDay />}
-
-          {step === 2 && selectedDay && (
-            <SelectMovie
-              movies={movies}
-              onSelect={movie => {
-                setSelectedMovie(movie);
-                nextStep();
-              }}
-            />
-          )}
-
-          {step === 3 && selectedMovie && (
-            <SelectSession
-              movie={selectedMovie}
-              onSelectSession={session => {
-                setSelectedSession(session);
-                nextStep();
-              }}
-            />
-          )}
-
-          {step === 4 && selectedDay && selectedMovie && selectedSession && (
-            <Summary
-              day={selectedDay}
-              movieTitle={selectedMovie.title}
-              time={selectedSession}
-              room={selectedMovie.rooms.find((room: Room) => room.sessions.includes(selectedSession))?.name || ''}
-            />
-          )}
-
-          <div className="flex w-full justify-between p-4">
-            {step >= 1 && (
-              <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
-                Voltar
-              </Button>
+          <AnimatePresence mode="wait">
+            {step === 0 && (
+              <motion.div
+                key="welcome"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <Welcome onNext={nextStep} />
+              </motion.div>
             )}
 
-            {(step > 3 || otherDay) && (
-              <Button onClick={handleConfirm} >
-                Confirmar
-              </Button>
+            {step === 1 && (
+              <motion.div
+                key="select-day"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <SelectDay days={allDays} onSelectDay={handleSelectDay} />
+              </motion.div>
             )}
-          </div>
+
+            {otherDay && (
+              <motion.div
+                key="other-day"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <OtherDay />
+              </motion.div>
+            )}
+
+            {step === 2 && selectedDay && (
+              <motion.div
+                key="select-movie"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <SelectMovie
+                  movies={movies}
+                  onSelect={(movie) => {
+                    setSelectedMovie(movie);
+                    nextStep();
+                  }}
+                />
+              </motion.div>
+            )}
+
+            {step === 3 && selectedMovie && (
+              <motion.div
+                key="select-session"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <SelectSession
+                  movie={selectedMovie}
+                  onSelectSession={(session) => {
+                    setSelectedSession(session);
+                    nextStep();
+                  }}
+                />
+              </motion.div>
+            )}
+
+            {step === 4 && selectedDay && selectedMovie && selectedSession && (
+              <motion.div
+                key="summary"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -40 }}
+                transition={{ duration: 0.4 }}
+                className="w-full"
+              >
+                <Summary
+                  day={selectedDay}
+                  movieTitle={selectedMovie.title}
+                  time={selectedSession}
+                  room={
+                    selectedMovie.rooms.find((room: Room) =>
+                      room.sessions.includes(selectedSession)
+                    )?.name || ""
+                  }
+                />
+              </motion.div>
+            )}
+
+            <motion.div
+              className="flex w-full justify-between p-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              transition={{ duration: 0.3 }}
+            >
+              {step >= 1 && (
+                <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
+                  Voltar
+                </Button>
+              )}
+
+              {(step > 3 || otherDay) && (
+                <Button onClick={handleConfirm} >
+                  Confirmar
+                </Button>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </main>
       </div>
     </div>

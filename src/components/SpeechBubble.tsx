@@ -1,31 +1,47 @@
 "use client";
-import { useEffect, useState } from "react";
+
 import { cn } from "@/lib/utils";
+import { useEffect, useRef, useState } from "react";
 
 type SpeechBubbleProps = {
   text: string;
-  speed?: number; // tempo entre letras em ms
+  speed?: number;
   className?: string;
+  onComplete?: () => void;
 };
 
-export default function SpeechBubble({ text, speed = 100, className }: SpeechBubbleProps) {
+export default function SpeechBubble({
+  text,
+  speed = 100,
+  className,
+  onComplete,
+}: SpeechBubbleProps) {
   const [displayedText, setDisplayedText] = useState("");
+  const completed = useRef(false); // controle interno
 
   useEffect(() => {
-    let i = 1;                // começamos no 1 pra já fatiar ao menos 1 caractere
-    setDisplayedText("");     // resetar sempre que `text` muda
+    let i = 1;
+    setDisplayedText("");
+    completed.current = false;
 
     const interval = setInterval(() => {
-      setDisplayedText(text.slice(0, i));   // slice garante que cada fatia esteja sempre correta
+      setDisplayedText(text.slice(0, i));
       i++;
+
       if (i > text.length) {
         clearInterval(interval);
+        if (!completed.current) {
+          completed.current = true;
+          onComplete?.(); // só chama se ainda não foi chamado
+        }
       }
     }, speed);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      completed.current = true; // evita chamar após desmontar/reiniciar
+    };
   }, [text, speed]);
-
 
   return (
     <div

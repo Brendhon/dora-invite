@@ -10,12 +10,13 @@ type DoraGreetingProps = {
   className?: string;
   imgSize?: number;
   type?: ('welcome' | 'thinking' | 'select-movie' | 'select-time' | 'summary' | 'others');
+  onComplete?: () => void; // callback quando terminar o texto
 };
 
-export default function DoraSpeaking({ text, speed = 50, className, imgSize = 100, type = 'welcome' }: DoraGreetingProps) {
+export default function DoraSpeaking({ onComplete, text, speed = 50, className, imgSize = 100, type = 'welcome' }: DoraGreetingProps) {
   return (
     <div className={cn("flex flex-col items-center gap-2", className)}>
-      <SpeechBubble speed={speed} text={text} className="w-[320px] text-center" />
+      <SpeechBubble onComplete={onComplete} speed={speed} text={text} className="w-[320px] text-center" />
       <Illustration src={`dora-${type}.png`} width={imgSize} />
     </div>
   );
