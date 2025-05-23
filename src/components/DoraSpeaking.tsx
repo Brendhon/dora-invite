@@ -11,10 +11,10 @@ type DoraGreetingProps = {
   imgSize?: number;
 };
 
-export default function DoraSpeaking({ text, speed = 90, className, imgSize = 180 }: DoraGreetingProps) {
+export default function DoraSpeaking({ text, speed = 50, className, imgSize = 180 }: DoraGreetingProps) {
   return (
     <div className={cn("flex flex-col items-center gap-2", className)}>
-      <SpeechBubble speed={speed} text={text} className="w-[300px] text-center" />
+      <SpeechBubble speed={speed} text={text} className="w-[320px] text-center" />
       <Illustration src="dora.png" width={imgSize} />
     </div>
   );

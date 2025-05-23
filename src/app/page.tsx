@@ -1,12 +1,12 @@
 "use client";
 
 import Button from "@/components/Button";
-import Illustration from "@/components/Illustration";
+import { OtherDay } from "@/components/OtherDay";
 import SelectDay from "@/components/SelectDay";
 import { SelectMovie } from "@/components/SelectMovie";
-import SpeechBubble from "@/components/SpeechBubble";
+import { SelectSession } from "@/components/SelectSession";
+import { Summary } from "@/components/Summary";
 import Welcome from "@/components/Welcome";
-import { MESSAGES } from "@/constants/messages";
 import { fetchMovies } from "@/lib/movies";
 import { cn } from "@/lib/utils";
 import { MovieSession, Room } from "@/types/movie";
@@ -16,9 +16,10 @@ export default function Home() {
   const [step, setStep] = useState(0);
 
   // Estados para armazenar as escolhas
+  const [otherDay, setOtherDay] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [selectedMovie, setSelectedMovie] = useState<MovieSession | null>(null);
-  const [selectedSession, setSelectedSession] = useState<{ room: Room; time: string } | null>(null);
+  const [selectedSession, setSelectedSession] = useState<string>('');
 
   // Dados dos filmes
   const [movies, setMovies] = useState<MovieSession[]>([]);
@@ -32,8 +33,25 @@ export default function Home() {
 
   // Funções para avançar e retroceder os passos
   const nextStep = () => setStep(s => s + 1);
-  const prevStep = () => setStep(s => s - 1);
+  const prevStep = () => {
+    setOtherDay(false);
+    setStep(s => s - 1)
+  };
 
+
+  // Função para lidar com o clique 'Confirmar'
+  const handleConfirm = () => {
+    if (selectedDay && selectedMovie && selectedSession) {
+      alert(`Você escolheu:\nDia: ${selectedDay}\nFilme: ${selectedMovie.title}\nSessão: ${selectedSession}`);
+    }
+  };
+
+  // Selecionar dia
+  const handleSelectDay = (day: string | null) => {
+    setSelectedDay(day);
+    nextStep();
+    day ? setOtherDay(false) : setOtherDay(true);
+  };
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden">
@@ -57,13 +75,11 @@ export default function Home() {
           {step === 1 && (
             <SelectDay
               days={allDays}
-              onSelectDay={day => {
-                setSelectedDay(day);
-                nextStep();
-              }}
-              onBack={prevStep}
+              onSelectDay={handleSelectDay}
             />
           )}
+
+          {otherDay && <OtherDay />}
 
           {step === 2 && selectedDay && (
             <SelectMovie
@@ -72,38 +88,41 @@ export default function Home() {
                 setSelectedMovie(movie);
                 nextStep();
               }}
-              onBack={prevStep}
             />
           )}
 
-          {/* {step === 3 && selectedMovie && (
+          {step === 3 && selectedMovie && (
             <SelectSession
               movie={selectedMovie}
-              day={selectedDay!}
-              selectedSession={selectedSession}
               onSelectSession={session => {
                 setSelectedSession(session);
                 nextStep();
               }}
-              onBack={prevStep}
             />
           )}
 
           {step === 4 && selectedDay && selectedMovie && selectedSession && (
             <Summary
               day={selectedDay}
-              movie={selectedMovie}
-              session={selectedSession}
-              onConfirm={() => alert("Vamos ao cinema! 🎬")}
-              onBack={prevStep}
+              movieTitle={selectedMovie.title}
+              time={selectedSession}
+              room={selectedMovie.rooms.find((room: Room) => room.sessions.includes(selectedSession))?.name || ''}
             />
-          )} */}
-
-          {step >= 1 && (
-            <Button onClick={prevStep} className="absolute bottom-4 left-4 text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
-              Voltar
-            </Button>
           )}
+
+          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-4">
+            {step >= 1 && (
+              <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
+                Voltar
+              </Button>
+            )}
+
+            {(step > 3 || otherDay) && (
+              <Button onClick={handleConfirm} >
+                Confirmar
+              </Button>
+            )}
+          </div>
         </main>
       </div>
     </div>

@@ -17,3 +17,7 @@ body {
 strong {
   color: var(--primary);
 }
+
+.capitalize-first::first-letter {
+  text-transform: uppercase;
+}
