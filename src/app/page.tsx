@@ -61,11 +61,12 @@ export default function Home() {
       {/* Container simulado de iPhone */}
       <div
         className={cn(
-          "relative bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden z-10",
-          "w-full max-w-[430px] aspect-[430/932]"
+          "relative bg-white shadow-xl border border-gray-200 overflow-hidden z-10",
+          "w-full max-w-[430px] aspect-[430/932]",
+          "rounded-none sm:rounded-3xl"
         )}
       >
-        <main className="relative w-full h-full flex flex-col items-center justify-center text-center p-6">
+        <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6">
           {step === 0 && (
             <Welcome
               onNext={nextStep}
@@ -110,7 +111,7 @@ export default function Home() {
             />
           )}
 
-          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-4">
+          <div className="flex w-full justify-between p-4">
             {step >= 1 && (
               <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
                 Voltar
