@@ -14,7 +14,7 @@ export default function SelectDay({
   onBack,
 }: DayPickerProps) {
   return (
-    <div className="p-4">
+    <>
       <DoraSpeaking text={MESSAGES.choose_day} />
       <div className="mt-4 grid grid-cols-3 gap-4">
         {days.map((day) => (
@@ -26,10 +26,6 @@ export default function SelectDay({
           </Button>
         ))}
       </div>
-
-      <Button onClick={onBack}>
-        Cancelar
-      </Button>
-    </div>
+    </>
   );
 }

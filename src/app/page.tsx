@@ -1,7 +1,9 @@
 "use client";
 
+import Button from "@/components/Button";
 import Illustration from "@/components/Illustration";
 import SelectDay from "@/components/SelectDay";
+import { SelectMovie } from "@/components/SelectMovie";
 import SpeechBubble from "@/components/SpeechBubble";
 import Welcome from "@/components/Welcome";
 import { MESSAGES } from "@/constants/messages";
@@ -63,42 +65,45 @@ export default function Home() {
             />
           )}
 
-          {/* {step === 2 && selectedDay && (
-        <SelectMovie
-          movies={movies}
-          day={selectedDay}
-          selectedMovie={selectedMovie}
-          onSelectMovie={movie => {
-            setSelectedMovie(movie);
-            nextStep();
-          }}
-          onBack={prevStep}
-        />
-      )}
+          {step === 2 && selectedDay && (
+            <SelectMovie
+              movies={movies}
+              onSelect={movie => {
+                setSelectedMovie(movie);
+                nextStep();
+              }}
+              onBack={prevStep}
+            />
+          )}
 
-      {step === 3 && selectedMovie && (
-        <SelectSession
-          movie={selectedMovie}
-          day={selectedDay!}
-          selectedSession={selectedSession}
-          onSelectSession={session => {
-            setSelectedSession(session);
-            nextStep();
-          }}
-          onBack={prevStep}
-        />
-      )}
+          {/* {step === 3 && selectedMovie && (
+            <SelectSession
+              movie={selectedMovie}
+              day={selectedDay!}
+              selectedSession={selectedSession}
+              onSelectSession={session => {
+                setSelectedSession(session);
+                nextStep();
+              }}
+              onBack={prevStep}
+            />
+          )}
 
-      {step === 4 && selectedDay && selectedMovie && selectedSession && (
-        <Summary
-          day={selectedDay}
-          movie={selectedMovie}
-          session={selectedSession}
-          onConfirm={() => alert("Vamos ao cinema! 🎬")}
-          onBack={prevStep}
-        />
-      )} */}
+          {step === 4 && selectedDay && selectedMovie && selectedSession && (
+            <Summary
+              day={selectedDay}
+              movie={selectedMovie}
+              session={selectedSession}
+              onConfirm={() => alert("Vamos ao cinema! 🎬")}
+              onBack={prevStep}
+            />
+          )} */}
 
+          {step >= 1 && (
+            <Button onClick={prevStep} className="absolute bottom-4 left-4 text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
+              Voltar
+            </Button>
+          )}
         </main>
       </div>
     </div>

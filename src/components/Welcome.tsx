@@ -4,7 +4,7 @@ import Button from "./Button";
 
 export default function Welcome({ onNext }: { onNext: () => void }) {
   return (
-    <div className="flex flex-col items-center justify-center h-full p-4">
+    <div className="flex flex-col items-center justify-center h-full">
       <DoraSpeaking text={MESSAGES.greeting} />
       <Button onClick={onNext}>
         Vamos lá!

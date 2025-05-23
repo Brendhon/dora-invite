@@ -5,9 +5,11 @@ export const MESSAGES = {
 `,
   cinema_invitation: "Oi, amiga! Vamos juntos escolher um filme incrível para assistir no cinema? 🎥🍿",
 
-  choose_day: "Para qual dia você quer ir ao cinema? <br/>Sábado? Domingo? Vamos olhar a agenda juntos! 🗓️🦶",
+  choose_day: `Estou em dúvida!! <br/>
+  Qual dia devo ir ao cinema? <br/>
+  Sábado? Domingo? <br/>Vamos olhar a agenda juntos! 🗓️🦶`,
 
-  choose_time: "Muito bem! Agora, qual horário é melhor para você?<br/>Tem sessão de manhã, à tarde... e até à noite! 🕒🌞🌜",
+  choose_time: "Muito bem! Agora, qual horário é melhor?<br/>Tem sessão de manhã, à tarde... e até à noite! 🕒🌞🌜",
 
   map_song: "Vamos chamar o Mapa para nos ajudar!<br/>🎵 Mapa, mapa, mapa! Onde fica o cinema? 🎵",
 
@@ -20,5 +22,5 @@ export const MESSAGES = {
 
   final_message: "Estou tão animada!<br/>Vejo você no cinema! Vamos nos divertir muuuito! 🎉🎈",
 
-  thank_you: "Obrigada por me ajudar, Aventureiro(a)!<br/>Até logo!<br/>Beijos da Dora 💜🌟"
+  thank_you: "Obrigada por me ajudar, Aventureira!<br/>Até logo!<br/>Beijos da Dora 💜🌟"
 }

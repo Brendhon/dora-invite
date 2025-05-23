@@ -30,7 +30,7 @@ export default function SpeechBubble({ text, speed = 100, className }: SpeechBub
   return (
     <div
       className={cn(
-        "max-w-full bg-white text-gray-800 text-base rounded-xl p-4 shadow-md border border-gray-300",
+        "max-w-full bg-white text-gray-800 text-base rounded-xl p-3 shadow-md border border-gray-300",
         className
       )}
     >
