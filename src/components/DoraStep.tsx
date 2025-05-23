@@ -1,12 +1,13 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useState } from "react";
 import DoraSpeaking from "./DoraSpeaking";
+import { cn } from "@/lib/utils";
 
 type DoraStepProps = {
   text: string;
   type?: 'welcome' | 'thinking' | 'select-movie' | 'select-time' | 'summary' | 'others';
   speed?: number;
-  direction?: "normal" | "reverse"; // layout da imagem e fala
+  direction?: "row" | "row-reverse" | 'col' | 'col-reverse';
   children: React.ReactNode;
 };
 
@@ -14,7 +15,7 @@ export default function DoraStep({
   text,
   type = "welcome",
   speed,
-  direction = "normal",
+  direction = "col-reverse",
   children,
 }: DoraStepProps) {
   // Estado para controlar se a fala terminou
@@ -23,6 +24,17 @@ export default function DoraStep({
   // Callback para quando a fala termina
   const handleComplete = useCallback(() => setDone(true), []);
 
+  // Form direction class
+  const formDirectionClass = {
+    row: "flex-row",
+    "row-reverse": "flex-row-reverse",
+    col: "flex-col",
+    "col-reverse": "flex-col-reverse",
+  };
+
+  const className = formDirectionClass[direction];
+
+
   return (
     <div className="flex flex-col items-center gap-6">
       <DoraSpeaking
@@ -30,7 +42,7 @@ export default function DoraStep({
         type={type}
         speed={speed}
         onComplete={handleComplete}
-        className={direction === "reverse" ? "flex-row-reverse" : ""}
+        className={className}
       />
 
       <AnimatePresence>

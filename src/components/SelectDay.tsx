@@ -69,7 +69,7 @@ export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
   ];
 
   return (
-    <DoraStep text={MESSAGES.choose_day} type="thinking" direction="reverse">
+    <DoraStep text={MESSAGES.choose_day} type="thinking" direction="col-reverse">
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {allCards.map(({ key, title, dateStr, index }) => (
           <Card
