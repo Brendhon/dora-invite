@@ -1,8 +1,12 @@
 import Illustration from "@/components/Illustration";
 import SpeechBubble from "@/components/SpeechBubble";
+import { MESSAGES } from "@/constants/messages";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
+  // Get messages from the server
+  const messages = MESSAGES;
+
   return (
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden">
       {/* Fundo borrado suave */}
@@ -16,7 +20,7 @@ export default function Home() {
         )}
       >
         <main className="relative w-full h-full flex flex-col items-center justify-center text-center p-6">
-          <SpeechBubble speed={60} text=" Olá! <strong>Sou Dora, a Aventureira!</strong>. <br/>Vamos escolher um dia para o cinema?" />
+          <SpeechBubble speed={60} text={messages.cinema_invitation} />
 
           {/* Conteúdo */}
           <div className="mt-64">
@@ -32,8 +36,6 @@ export default function Home() {
             src="dora.png"
             width={180}
           />
-
-
 
         </main>
       </div>

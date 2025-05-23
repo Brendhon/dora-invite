@@ -8,24 +8,24 @@ type SpeechBubbleProps = {
   className?: string;
 };
 
-export default function SpeechBubble({ text, speed = 40, className }: SpeechBubbleProps) {
-  const [displayedText, setDisplayedText] = useState(" ");
+export default function SpeechBubble({ text, speed = 80, className }: SpeechBubbleProps) {
+  const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
-    let i = 0;
-    setDisplayedText(" "); // Reinicia ao mudar o texto
+    let i = 1;                // começamos no 1 pra já fatiar ao menos 1 caractere
+    setDisplayedText("");     // resetar sempre que `text` muda
 
     const interval = setInterval(() => {
-      setDisplayedText((prev) => {
-        if (i >= text.length) return prev;
-        return prev + text[i];
-      });
+      setDisplayedText(text.slice(0, i));   // slice garante que cada fatia esteja sempre correta
       i++;
-      if (i >= text.length) clearInterval(interval);
+      if (i > text.length) {
+        clearInterval(interval);
+      }
     }, speed);
 
     return () => clearInterval(interval);
   }, [text, speed]);
+
 
   return (
     <div
