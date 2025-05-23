@@ -14,7 +14,7 @@ export function SelectMovie({ movies, onSelect, onBack }: SelectMovieProps) {
       <DoraSpeaking
         text={MESSAGES.cinema_invitation}
         className="flex-row-reverse"
-        imgSize={130}
+        type="select-movie"
       />
 
       <div className="grid gap-4 max-w-md w-full">

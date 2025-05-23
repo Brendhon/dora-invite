@@ -16,6 +16,7 @@ export function SelectSession({
       <DoraSpeaking
         text={MESSAGES.choose_time}
         className="flex-row-reverse"
+        type="select-time"
       />
       <div className="w-full max-w-md space-y-6">
         {movie.rooms.map((room) => (

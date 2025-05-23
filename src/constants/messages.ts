@@ -9,7 +9,7 @@ export const MESSAGES = {
   choose_day: `Hmm, estou pensando...<br/>
   Qual será o melhor dia para ir ao cinema?<br/>
   Sábado ou domingo?<br/>
-  Vamos olhar a agenda juntos! 🗓️🦶`,
+  Vamos olhar a agenda juntas! 🗓️`,
 
   choose_time: `Muito bem, aventureira! Agora precisamos decidir o horário.<br/>
   Tem sessão de manhã, à tarde e até à noite!<br/>

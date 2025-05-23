@@ -15,7 +15,7 @@ export default ({ className = '', src, width = 400 }: Props) => {
         alt='Illustration'
         width={width}
         height={width}
-        src={`/${src}`}
+        src={`/doras/${src}`}
         className={cn("h-auto object-contain", `w-[${width}px]`)}
       />
     </div>

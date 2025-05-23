@@ -7,6 +7,7 @@ export function OtherDay() {
       <DoraSpeaking
         text={MESSAGES.other_day_message}
         className="flex-col-reverse"
+        type="others"
       />
     </div>
   );

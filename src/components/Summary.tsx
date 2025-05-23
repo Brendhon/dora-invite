@@ -26,6 +26,7 @@ export function Summary({
         </div>
         ${MESSAGES.summary_conclusion}`}
         className="flex-col-reverse"
+        type="summary"
       />
     </div>
   );

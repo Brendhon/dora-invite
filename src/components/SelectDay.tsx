@@ -44,7 +44,7 @@ export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <DoraSpeaking text={MESSAGES.choose_day} className="flex-row-reverse" />
+      <DoraSpeaking text={MESSAGES.choose_day} className="flex-row-reverse" type="thinking" />
 
       <div className="grid grid-cols-1 gap-4 w-full max-w-md overflow-auto max-h-96">
         {weekendDays.map((dateStr) => <Card key={dateStr} title={getWeekday(dateStr)} dateStr={dateStr} />)}

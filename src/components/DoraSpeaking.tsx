@@ -9,13 +9,14 @@ type DoraGreetingProps = {
   speed?: number;
   className?: string;
   imgSize?: number;
+  type?: ('welcome' | 'thinking' | 'select-movie' | 'select-time' | 'summary' | 'others');
 };
 
-export default function DoraSpeaking({ text, speed = 50, className, imgSize = 180 }: DoraGreetingProps) {
+export default function DoraSpeaking({ text, speed = 50, className, imgSize = 100, type = 'welcome' }: DoraGreetingProps) {
   return (
     <div className={cn("flex flex-col items-center gap-2", className)}>
       <SpeechBubble speed={speed} text={text} className="w-[320px] text-center" />
-      <Illustration src="dora.png" width={imgSize} />
+      <Illustration src={`dora-${type}.png`} width={imgSize} />
     </div>
   );
 }
