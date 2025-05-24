@@ -39,11 +39,17 @@ export default function Home() {
     setStep(s => s - 1)
   };
 
-
-  // Função para lidar com o clique 'Confirmar'
   const handleConfirm = () => {
     if (selectedDay && selectedMovie && selectedSession) {
-      alert(`Você escolheu:\nDia: ${selectedDay}\nFilme: ${selectedMovie.title}\nSessão: ${selectedSession}`);
+      const message = `Oi! Eu escolhi esse filme para assistirmos juntos:
+        🎬 *Filme:* ${selectedMovie.title}
+        📅 *Dia:* ${selectedDay}
+        ⏰ *Horário:* ${selectedSession}`;
+
+      const phone = "5535997164703";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+      window.open(url, "_blank");
     }
   };
 
