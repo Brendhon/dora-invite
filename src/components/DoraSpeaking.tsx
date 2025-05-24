@@ -15,8 +15,8 @@ type DoraGreetingProps = {
 
 export default function DoraSpeaking({ onComplete, text, speed = 50, className, imgSize = 100, type = 'welcome' }: DoraGreetingProps) {
   return (
-    <div className={cn("flex flex-col items-center gap-2", className)}>
-      <SpeechBubble onComplete={onComplete} speed={speed} text={text} className="w-[320px] text-center" />
+    <div className={cn("flex flex-col items-center gap-2 w-full", className)}>
+      <SpeechBubble onComplete={onComplete} speed={speed} text={text} className="w-full text-center" />
       <Illustration src={`dora-${type}.png`} width={imgSize} />
     </div>
   );

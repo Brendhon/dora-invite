@@ -75,7 +75,7 @@ export default function Home() {
       <div
         className={cn(
           "relative bg-white shadow-xl border border-gray-200 overflow-hidden z-10",
-          "w-full max-w-[400px] m-10 min0-h-screen",
+          "w-full max-w-[400px] m-6",
           "rounded-3xl"
         )}
       >
