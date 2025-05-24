@@ -46,22 +46,18 @@ export default function Home() {
   };
 
   const handleConfirm = () => {
+    let message = "Oi! Podemos escolher outro dia?";
+
     if (selectedDay && selectedMovie && selectedSession) {
-      const message = `Oi! Eu escolhi esse filme para assistirmos juntos no Cineart! 🍿:
+      message = `Oi! Eu escolhi esse filme para assistirmos juntos no Cineart! 🍿:
       🎬 *Filme:* ${selectedMovie.title}
       📅 *Dia:* ${selectedDay}
       ⏰ *Horário:* ${selectedSession}`;
-
-      const phone = "5535997164703";
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-      window.open(url, "_blank");
-    } else {
-      const message = `Oi! Podemos escolher outro dia?`;
-      const phone = "5535997164703";
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
     }
+    
+    const phone = "5535997164703";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   // Selecionar dia
