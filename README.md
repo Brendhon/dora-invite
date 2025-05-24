@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📽️ Dora Aventureira no Cinema
 
-## Getting Started
+Explore uma jornada divertida com a Dora Aventureira para escolher um filme, data e horário para uma aventura no cinema! 🍿🎬
 
-First, run the development server:
+---
+
+## ✨ Demonstração
+
+> Acesse o projeto em: [https://dora-cinema.vercel.app](https://dora-cinema.vercel.app)
+
+---
+
+## 🚀 Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Headless UI](https://headlessui.com/)
+- [Lucide Icons](https://lucide.dev/)
+- [Framer Motion](https://www.framer.com/motion/)
+- [Vercel](https://vercel.com/) – Deploy
+
+---
+
+## 💡 Funcionalidades
+
+- Interface divertida e interativa inspirada na Dora Aventureira
+- Escolha de dias disponíveis para o cinema
+- Listagem de filmes e gêneros
+- Seleção de sessões por sala, horário, idioma e formato
+- Animações suaves com Framer Motion
+- Envio de resumo da escolha via WhatsApp
+
+---
+
+## 🧠 Conceitos aplicados
+
+- Componentização com React
+- Animações com Framer Motion
+- Estilização com Tailwind e Headless UI
+- Uso de mensagens dinâmicas e interativas com HTML no texto
+- Separação por etapas com feedback visual da Dora
+
+---
+
+## 📦 Como rodar o projeto
 
 ```bash
+# Clone o repositório
+git clone git@github.com:Brendhon/dora-invite.git
+
+# Acesse a pasta do projeto
+cd dora-invite
+
+# Instale as dependências
+npm install
+
+# Rode o projeto em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra http://localhost:3000 no navegador para ver o resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 👥 Autor
+<img style="border-radius: 20%;" src="https://avatars1.githubusercontent.com/u/52840078?s=400&u=67bc81db89b5abf12cf592e0c610426afd3a02f4&v=4" width="120px;" alt="autor"/><br>
+**Brendhon Moreira**
