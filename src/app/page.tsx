@@ -56,6 +56,11 @@ export default function Home() {
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
       window.open(url, "_blank");
+    } else {
+      const message = `Oi! Podemos escolher outro dia?`;
+      const phone = "5535997164703";
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
     }
   };
 
