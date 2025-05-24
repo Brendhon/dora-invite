@@ -13,6 +13,7 @@ export default ({ className = '', src, width = 400 }: Props) => {
     <div className={cn("flex-col items-center flex", className)}>
       <Image
         alt='Illustration'
+        priority
         width={width}
         height={width}
         src={`/doras/${src}`}
