@@ -14,17 +14,18 @@ export function Summary({
   time,
   room,
 }: SummaryProps) {
+  // Form the message
+  const message = MESSAGES.summary
+    .replace("{movie}", movieTitle)
+    .replace("{day}", day)
+    .replace("{time}", time)
+    .replace("{room}", room);
+
+  // Return the component
   return (
     <div className="flex flex-col items-center gap-6">
       <DoraSpeaking
-        text={`${MESSAGES.summary_intro}
-        <div class="text-justify">
-          <strong>Filme:</strong> ${movieTitle}
-          <strong>Dia:</strong> ${day}
-          <strong>Horário:</strong> ${time}
-          <strong>Sala:</strong> ${room}
-        </div>
-        ${MESSAGES.summary_conclusion}`}
+        text={message}
         className="flex-col-reverse"
         type="summary"
       />

@@ -1,8 +1,8 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
+import AnimatedCard from "./AnimatedCard";
 import DoraStep from "./DoraStep";
-import { motion } from "framer-motion";
 
 type DayPickerProps = {
   days: string[];
@@ -19,31 +19,6 @@ function getWeekday(dateStr: string) {
     day: "numeric",
   }).format(date);
 }
-
-type CardProps = {
-  title: string;
-  dateStr?: string;
-  index: number;
-  onClick: () => void;
-};
-
-const Card = ({ title, dateStr, index, onClick }: CardProps) => (
-  <motion.div
-    onClick={onClick}
-    className="bg-white rounded-xl border p-4 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
-    initial={{ opacity: 0, x: 100 }} // começa mais à direita
-    animate={{ opacity: 1, x: 0 }}   // vai até o centro
-    transition={{
-      type: "spring",
-      stiffness: 80,     // mais moleza
-      damping: 12,       // menos "pulo"
-      delay: index * 0.5 + 1 // entrada em sequência
-    }}
-  >
-    <p className="text-lg font-semibold text-purple-700 capitalize-first">{title}</p>
-    {dateStr && <p className="text-sm mt-3 text-gray-600">{dateStr}</p>}
-  </motion.div>
-);
 
 export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
   const weekendDays = days.filter((dateStr) => {
@@ -72,13 +47,14 @@ export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
     <DoraStep text={MESSAGES.choose_day} type="thinking" direction="col-reverse">
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {allCards.map(({ key, title, dateStr, index }) => (
-          <Card
+          <AnimatedCard
             key={key}
-            title={title}
-            dateStr={dateStr}
             index={index}
             onClick={() => onSelectDay(dateStr || null)}
-          />
+          >
+            <p className="text-lg font-semibold text-purple-700 capitalize-first">{title}</p>
+            {dateStr && <p className="text-sm mt-3 text-gray-600">{dateStr}</p>}
+          </AnimatedCard>
         ))}
       </div>
     </DoraStep>

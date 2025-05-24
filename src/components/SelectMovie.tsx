@@ -1,36 +1,32 @@
-import { MovieSession } from "@/types/movie";
-import DoraSpeaking from "./DoraSpeaking";
+'use client';
+
 import { MESSAGES } from "@/constants/messages";
+import { MovieSession } from "@/types/movie";
+import AnimatedCard from "./AnimatedCard";
+import DoraStep from "./DoraStep";
 
 interface SelectMovieProps {
   movies: MovieSession[];
   onSelect: (movie: MovieSession) => void;
-  onBack?: () => void;
 }
 
-export function SelectMovie({ movies, onSelect, onBack }: SelectMovieProps) {
+export function SelectMovie({ movies, onSelect }: SelectMovieProps) {
   return (
-    <div className="flex flex-col items-center gap-6">
-      <DoraSpeaking
-        text={MESSAGES.cinema_invitation}
-        className="flex-row-reverse"
-        type="select-movie"
-      />
-
+    <DoraStep text={MESSAGES.cinema_invitation} type="select-movie" direction="col-reverse">
       <div className="grid gap-4 max-w-md w-full">
-        {movies.map((movie) => (
-          <button
+        {movies.map((movie, index) => (
+          <AnimatedCard
             key={movie.title}
+            index={index}
             onClick={() => onSelect(movie)}
-            className="w-full p-4 rounded-2xl border border-purple-300 shadow hover:shadow-md text-left bg-white transition"
           >
             <h3 className="text-lg font-bold text-purple-800">{movie.title}</h3>
             <p className="text-sm text-gray-500">
               {movie.genre.join(", ")} • {movie.ageRating}+ anos
             </p>
-          </button>
+          </AnimatedCard>
         ))}
       </div>
-    </div>
+    </DoraStep>
   );
 }

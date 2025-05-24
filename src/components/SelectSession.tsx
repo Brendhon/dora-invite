@@ -1,46 +1,46 @@
+'use client';
+
 import { MovieSession } from "@/types/movie";
-import DoraSpeaking from "./DoraSpeaking";
+import AnimatedCard from "./AnimatedCard";
+import DoraStep from "./DoraStep";
+import Button from "./Button";
 import { MESSAGES } from "@/constants/messages";
 
 interface SelectSessionProps {
   movie: MovieSession;
-  onSelectSession: (time: string, roomName: string) => void;
+  onSelect: (session: string) => void;
+  onBack?: () => void;
 }
 
-export function SelectSession({
-  movie,
-  onSelectSession,
-}: SelectSessionProps) {
+export function SelectSession({ movie, onSelect }: SelectSessionProps) {
   return (
-    <div className="flex flex-col items-center gap-6">
-      <DoraSpeaking
-        text={MESSAGES.choose_time}
-        className="flex-row-reverse"
-        type="select-time"
-      />
-      <div className="w-full max-w-md space-y-6">
-        {movie.rooms.map((room) => (
-          <div
-            key={room.name + room.format}
-            className="bg-white rounded-xl border p-5 shadow-md cursor-pointer hover:shadow-lg transition-shadow"
-          >
-            <p className="font-bold text-purple-700 mb-3">
-              {room.name} • {room.format} • {room.language}
-            </p>
-            <div className="flex flex-wrap gap-3">
-              {room.sessions.map((time) => (
-                <button
-                  key={time + room.name}
-                  onClick={() => onSelectSession(time, room.name)}
-                  className="rounded-md bg-purple-100 text-purple-800 px-3 py-1 text-sm font-medium hover:bg-purple-200 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
-                >
-                  {time}
-                </button>
-              ))}
+    <DoraStep
+      text={MESSAGES.select_time.replace("{movie}", movie.title)}
+      type="select-time"
+      direction="col-reverse"
+    >
+      <div className="grid gap-4 max-w-md w-full">
+        {movie.rooms.map((room, index) => (
+          <AnimatedCard key={room.name} index={index}>
+            <div>
+              <h4 className="text-md font-bold text-purple-800 mb-1">
+                Sala {room.name} 🎬 • {room.format} • {room.language}
+              </h4>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {room.sessions.map((time) => (
+                  <Button
+                    key={time}
+                    onClick={() => onSelect(time)}
+                    className="px-3 py-1 text-sm rounded-lg border border-purple-300 bg-white hover:bg-purple-50 transition text-primary"
+                  >
+                    {time} 🕒
+                  </Button>
+                ))}
+              </div>
             </div>
-          </div>
+          </AnimatedCard>
         ))}
       </div>
-    </div>
+    </DoraStep>
   );
 }

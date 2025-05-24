@@ -67,7 +67,7 @@ export default function Home() {
           "rounded-none sm:rounded-3xl"
         )}
       >
-        <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6">
+        <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6 overflow-y-auto scrollbar-hidden overflow-x-hidden">
           <AnimatePresence mode="wait">
             {step === 0 && (
               <motion.div
@@ -138,7 +138,7 @@ export default function Home() {
               >
                 <SelectSession
                   movie={selectedMovie}
-                  onSelectSession={(session) => {
+                  onSelect={(session) => {
                     setSelectedSession(session);
                     nextStep();
                   }}
