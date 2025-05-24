@@ -24,7 +24,7 @@ export function SelectSession({ movie, onSelect }: SelectSessionProps) {
           <AnimatedCard key={room.name + index} index={index}>
             <div>
               <h4 className="text-md font-bold text-purple-800 mb-1">
-                Sala {room.name} 🎬 • {room.format} • {room.language}
+                {room.name} 🎬 • {room.format} • {room.language}
               </h4>
               <div className="flex flex-wrap gap-2 mt-2">
                 {room.sessions.map((time, index) => (
