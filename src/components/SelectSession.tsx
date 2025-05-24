@@ -9,15 +9,16 @@ import { MESSAGES } from "@/constants/messages";
 interface SelectSessionProps {
   movie: MovieSession;
   onSelect: (session: string) => void;
-  onBack?: () => void;
+  onComplete?: () => void;
 }
 
-export function SelectSession({ movie, onSelect }: SelectSessionProps) {
+export function SelectSession({ movie, onSelect, onComplete }: SelectSessionProps) {
   return (
     <DoraStep
       text={MESSAGES.select_time.replace("{movie}", movie.title)}
       type="select-time"
       direction="col-reverse"
+      onComplete={onComplete}
     >
       <div className="grid gap-4 max-w-md w-full">
         {movie.rooms.map((room, index) => (

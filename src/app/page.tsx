@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [step, setStep] = useState(0);
+  const [canInteract, setCanInteract] = useState(false);
 
   // Estados para armazenar as escolhas
   const [otherDay, setOtherDay] = useState(false);
@@ -33,18 +34,23 @@ export default function Home() {
   const allDays = Array.from(new Set(movies.flatMap(m => m.dates))).sort();
 
   // Funções para avançar e retroceder os passos
-  const nextStep = () => setStep(s => s + 1);
+  const nextStep = () => {
+    setCanInteract(false);
+    setStep((s) => s + 1);
+  };
+
   const prevStep = () => {
+    setCanInteract(false);
     setOtherDay(false);
-    setStep(s => s - 1)
+    setStep((s) => s - 1);
   };
 
   const handleConfirm = () => {
     if (selectedDay && selectedMovie && selectedSession) {
-      const message = `Oi! Eu escolhi esse filme para assistirmos juntos:
-        🎬 *Filme:* ${selectedMovie.title}
-        📅 *Dia:* ${selectedDay}
-        ⏰ *Horário:* ${selectedSession}`;
+      const message = `Oi! Eu escolhi esse filme para assistirmos juntos no Cineart! 🍿:
+      🎬 *Filme:* ${selectedMovie.title}
+      📅 *Dia:* ${selectedDay}
+      ⏰ *Horário:* ${selectedSession}`;
 
       const phone = "5535997164703";
       const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -61,7 +67,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden">
+    <div className="min-h-screen w-full bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden flex justify-center">
       {/* Fundo borrado suave */}
       <div className="absolute inset-0 backdrop-blur-3xl z-0" />
 
@@ -69,8 +75,8 @@ export default function Home() {
       <div
         className={cn(
           "relative bg-white shadow-xl border border-gray-200 overflow-hidden z-10",
-          "w-full max-w-[430px] aspect-[430/932]",
-          "rounded-none sm:rounded-3xl"
+          "w-full max-w-[400px] m-10 min0-h-screen",
+          "rounded-3xl"
         )}
       >
         <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6 overflow-y-auto scrollbar-hidden overflow-x-hidden">
@@ -84,7 +90,7 @@ export default function Home() {
                 transition={{ duration: 0.4 }}
                 className="w-full"
               >
-                <Welcome onNext={nextStep} />
+                <Welcome onNext={nextStep} onComplete={() => setCanInteract(true)} />
               </motion.div>
             )}
 
@@ -97,7 +103,7 @@ export default function Home() {
                 transition={{ duration: 0.4 }}
                 className="w-full"
               >
-                <SelectDay days={allDays} onSelectDay={handleSelectDay} />
+                <SelectDay days={allDays} onSelectDay={handleSelectDay} onComplete={() => setCanInteract(true)} />
               </motion.div>
             )}
 
@@ -110,7 +116,7 @@ export default function Home() {
                 transition={{ duration: 0.4 }}
                 className="w-full"
               >
-                <OtherDay />
+                <OtherDay onComplete={() => setCanInteract(true)} />
               </motion.div>
             )}
 
@@ -124,6 +130,7 @@ export default function Home() {
                 className="w-full"
               >
                 <SelectMovie
+                  onComplete={() => setCanInteract(true)}
                   movies={movies}
                   onSelect={(movie) => {
                     setSelectedMovie(movie);
@@ -143,6 +150,7 @@ export default function Home() {
                 className="w-full"
               >
                 <SelectSession
+                  onComplete={() => setCanInteract(true)}
                   movie={selectedMovie}
                   onSelect={(session) => {
                     setSelectedSession(session);
@@ -165,6 +173,7 @@ export default function Home() {
                   day={selectedDay}
                   movieTitle={selectedMovie.title}
                   time={selectedSession}
+                  onComplete={() => setCanInteract(true)}
                   room={
                     selectedMovie.rooms.find((room: Room) =>
                       room.sessions.includes(selectedSession)
@@ -174,25 +183,27 @@ export default function Home() {
               </motion.div>
             )}
 
-            <motion.div
-              className="flex w-full justify-between p-4"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              transition={{ duration: 0.3 }}
-            >
-              {step >= 1 && (
-                <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
-                  Voltar
-                </Button>
-              )}
+            {canInteract &&
+              <motion.div
+                className="flex w-full justify-between p-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+              >
+                {step >= 1 && (
+                  <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
+                    Voltar
+                  </Button>
+                )}
 
-              {(step > 3 || otherDay) && (
-                <Button onClick={handleConfirm} >
-                  Confirmar
-                </Button>
-              )}
-            </motion.div>
+                {(step > 3 || otherDay) && (
+                  <Button onClick={handleConfirm} >
+                    Confirmar
+                  </Button>
+                )}
+              </motion.div>
+            }
           </AnimatePresence>
         </main>
       </div>

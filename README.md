@@ -6,7 +6,7 @@ Explore uma jornada divertida com a Dora Aventureira para escolher um filme, dat
 
 ## ✨ Demonstração
 
-> Acesse o projeto em: [https://dora-cinema.vercel.app](https://dora-cinema.vercel.app)
+> Acesse o projeto em: [https://dora-lyart.vercel.app/](https://dora-lyart.vercel.app/)
 
 ---
 

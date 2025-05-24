@@ -7,6 +7,7 @@ import DoraStep from "./DoraStep";
 type DayPickerProps = {
   days: string[];
   onSelectDay: (day: string | null) => void;
+  onComplete?: () => void;
 };
 
 function getWeekday(dateStr: string) {
@@ -20,7 +21,7 @@ function getWeekday(dateStr: string) {
   }).format(date);
 }
 
-export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
+export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerProps) {
   const weekendDays = days.filter((dateStr) => {
     const [day, month, year] = dateStr.split("/");
     const dateObj = new Date(`${year}-${month}-${day}`);
@@ -44,7 +45,7 @@ export default function SelectDay({ days, onSelectDay }: DayPickerProps) {
   ];
 
   return (
-    <DoraStep text={MESSAGES.choose_day} type="thinking" direction="col-reverse">
+    <DoraStep text={MESSAGES.choose_day} type="thinking" direction="col-reverse" onComplete={onComplete}>
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {allCards.map(({ key, title, dateStr, index }) => (
           <AnimatedCard

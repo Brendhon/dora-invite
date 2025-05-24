@@ -8,11 +8,12 @@ import DoraStep from "./DoraStep";
 interface SelectMovieProps {
   movies: MovieSession[];
   onSelect: (movie: MovieSession) => void;
+  onComplete?: () => void;
 }
 
-export function SelectMovie({ movies, onSelect }: SelectMovieProps) {
+export function SelectMovie({ movies, onSelect, onComplete }: SelectMovieProps) {
   return (
-    <DoraStep text={MESSAGES.cinema_invitation} type="select-movie" direction="col-reverse">
+    <DoraStep text={MESSAGES.cinema_invitation} type="select-movie" direction="col-reverse" onComplete={onComplete}>
       <div className="grid gap-4 max-w-md w-full">
         {movies.map((movie, index) => (
           <AnimatedCard

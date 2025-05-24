@@ -6,6 +6,7 @@ interface SummaryProps {
   day: string;
   time: string;
   room: string;
+  onComplete?: () => void;
 }
 
 export function Summary({
@@ -13,6 +14,7 @@ export function Summary({
   day,
   time,
   room,
+  onComplete
 }: SummaryProps) {
   // Form the message
   const message = MESSAGES.summary
@@ -26,6 +28,7 @@ export function Summary({
     <div className="flex flex-col items-center gap-6">
       <DoraSpeaking
         text={message}
+        onComplete={onComplete}
         className="flex-col-reverse"
         type="summary"
       />

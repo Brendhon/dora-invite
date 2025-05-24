@@ -9,6 +9,7 @@ type DoraStepProps = {
   speed?: number;
   direction?: "row" | "row-reverse" | 'col' | 'col-reverse';
   children: React.ReactNode;
+  onComplete?: () => void;
 };
 
 export default function DoraStep({
@@ -17,12 +18,16 @@ export default function DoraStep({
   speed,
   direction = "col-reverse",
   children,
+  onComplete,
 }: DoraStepProps) {
   // Estado para controlar se a fala terminou
   const [done, setDone] = useState(false);
 
   // Callback para quando a fala termina
-  const handleComplete = useCallback(() => setDone(true), []);
+  const handleComplete = useCallback(() => {
+    setDone(true)
+    onComplete?.();
+  }, []);
 
   // Form direction class
   const formDirectionClass = {

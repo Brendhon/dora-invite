@@ -1,11 +1,15 @@
 import { MESSAGES } from "@/constants/messages";
-import DoraSpeaking from "./DoraSpeaking";
 import Button from "./Button";
 import DoraStep from "./DoraStep";
 
-export default function Welcome({ onNext }: { onNext: () => void }) {
+interface WelcomeProps {
+  onNext: () => void;
+  onComplete: () => void;
+}
+
+export default function Welcome({ onNext, onComplete }: WelcomeProps) {
   return (
-    <DoraStep text={MESSAGES.greeting} type="welcome">
+    <DoraStep text={MESSAGES.greeting} type="welcome"  onComplete={onComplete} >
       <Button onClick={onNext}>Vamos lá!</Button>
     </DoraStep>
   );
