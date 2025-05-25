@@ -8,7 +8,7 @@ import { SelectSession } from "@/components/SelectSession";
 import { Summary } from "@/components/Summary";
 import Welcome from "@/components/Welcome";
 import { fetchMovies } from "@/lib/movies";
-import { cn } from "@/lib/utils";
+import { cn, getWeekday } from "@/lib/utils";
 import { MovieSession, Room } from "@/types/movie";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -46,20 +46,17 @@ export default function Home() {
   };
 
   const handleConfirm = () => {
-    let message = "Oi! Podemos escolher outro dia?";
+    let message = "¡Hola! 😊 Vamos escolher outro dia para a nossa aventura no cinema? 🎬✨";
 
     if (selectedDay && selectedMovie && selectedSession) {
-      // Get day name from date
-      const day = new Date(selectedDay).toLocaleDateString('pt-BR', {
-        weekday: 'long',
-      });
-
-      message = `Oi! Eu escolhi esse filme para assistirmos juntos no Cineart! 🍿:
-      🎬 *Filme:* ${selectedMovie.title}
-      📅 *Dia:* ${day}
-      ⏰ *Horário:* ${selectedSession}`;
+      message = `¡Hola! 🥳 Eu escolhi um filme pra nossa aventura no Cineart! 🍿
+      📍 Nossa missão:
+        - 🎬 *Filme:* ${selectedMovie.title}
+        - 📅 *Dia:* ${getWeekday(selectedDay)}
+        - ⏰ *Hora:* ${selectedSession}
+      Vamos nessa? Vai ser super divertido! 🎒✨`;
     }
-    
+
     const phone = "5535997164703";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");

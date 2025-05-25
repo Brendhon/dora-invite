@@ -19,17 +19,6 @@ strong {
   color: var(--primary);
 }
 
-.capitalize-first::first-letter {
-  text-transform: uppercase;
-}
-
-.justify {
-  display: flex;
-  flex-direction: column;
-  justify-content: justify;
-  text-align: justify;
-}
-
 @layer utilities {
   .scrollbar-custom {
     scrollbar-width: thin; /* Firefox */
@@ -64,6 +53,13 @@ strong {
   .scrollbar-hidden::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
   }
+}
+
+.justify {
+  display: flex;
+  flex-direction: column;
+  justify-content: justify;
+  text-align: justify;
 }
 
 .speech-bubble {

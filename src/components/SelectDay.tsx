@@ -1,6 +1,7 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
+import { getWeekday } from "@/lib/utils";
 import AnimatedCard from "./AnimatedCard";
 import DoraStep from "./DoraStep";
 
@@ -9,17 +10,6 @@ type DayPickerProps = {
   onSelectDay: (day: string | null) => void;
   onComplete?: () => void;
 };
-
-function getWeekday(dateStr: string) {
-  const [day, month, year] = dateStr.split("/");
-  const date = new Date(`${year}-${month}-${day}`);
-  return new Intl.DateTimeFormat("pt-BR", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
 
 export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerProps) {
   const weekendDays = days.filter((dateStr) => {
@@ -53,7 +43,7 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
             index={index}
             onClick={() => onSelectDay(dateStr || null)}
           >
-            <p className="text-lg font-semibold text-purple-700 capitalize-first">{title}</p>
+            <p className="text-lg font-semibold text-purple-700">{title}</p>
             {dateStr && <p className="text-sm mt-3 text-gray-600">{dateStr}</p>}
           </AnimatedCard>
         ))}
