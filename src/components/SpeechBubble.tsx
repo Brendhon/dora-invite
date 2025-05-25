@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type SpeechBubbleProps = {
   text: string;
   speed?: number;
+  direction?: "top" | "bottom" | "left" | "right";
   className?: string;
   onComplete?: () => void;
 };
@@ -13,11 +14,12 @@ type SpeechBubbleProps = {
 export default function SpeechBubble({
   text,
   speed = 100,
+  direction = "top",
   className,
   onComplete,
 }: SpeechBubbleProps) {
   const [displayedText, setDisplayedText] = useState("");
-  const completed = useRef(false); // controle interno
+  const completed = useRef(false);
 
   useEffect(() => {
     let i = 1;
@@ -32,21 +34,22 @@ export default function SpeechBubble({
         clearInterval(interval);
         if (!completed.current) {
           completed.current = true;
-          onComplete?.(); // só chama se ainda não foi chamado
+          onComplete?.();
         }
       }
     }, speed);
 
     return () => {
       clearInterval(interval);
-      completed.current = true; // evita chamar após desmontar/reiniciar
+      completed.current = true;
     };
   }, [text, speed]);
 
   return (
     <div
       className={cn(
-        "max-w-full bg-white text-gray-800 text-base rounded-xl p-3 shadow-md border border-gray-300",
+        "speech-bubble",
+        `speech-bubble-${direction}`,
         className
       )}
     >

@@ -1,0 +1,1 @@
+export const TEXT_SPEED = 50; // Velocidade do texto

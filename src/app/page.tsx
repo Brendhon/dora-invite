@@ -49,9 +49,14 @@ export default function Home() {
     let message = "Oi! Podemos escolher outro dia?";
 
     if (selectedDay && selectedMovie && selectedSession) {
+      // Get day name from date
+      const day = new Date(selectedDay).toLocaleDateString('pt-BR', {
+        weekday: 'long',
+      });
+
       message = `Oi! Eu escolhi esse filme para assistirmos juntos no Cineart! 🍿:
       🎬 *Filme:* ${selectedMovie.title}
-      📅 *Dia:* ${selectedDay}
+      📅 *Dia:* ${day}
       ⏰ *Horário:* ${selectedSession}`;
     }
     

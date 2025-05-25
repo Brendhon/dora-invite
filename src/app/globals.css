@@ -6,6 +6,7 @@
   --background: #c4b5fd; /* Tailwind purple-300 */
   --foreground: #171717;
   --primary: #6b21a8; /* Tailwind purple-700 */
+  --bubble: #d1d5db; /* Tailwind gray-300 */
 }
 
 body {
@@ -63,4 +64,114 @@ strong {
   .scrollbar-hidden::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Edge */
   }
+}
+
+.speech-bubble {
+  margin-top: 10px;
+  position: relative;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  padding: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ↓ Seta para cima (fala vindo de cima) */
+.speech-bubble-top::after,
+.speech-bubble-top::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 0;
+}
+
+.speech-bubble-top::after {
+  border-width: 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+}
+
+.speech-bubble-top::before {
+  top: -11px;
+  border-width: 0 11px 11px;
+  border-style: solid;
+  border-color: transparent transparent #d1d5db transparent;
+}
+
+/* ↑ Seta para baixo (fala vindo de baixo) */
+.speech-bubble-bottom::after,
+.speech-bubble-bottom::before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: block;
+  width: 0;
+}
+
+.speech-bubble-bottom::after {
+  border-width: 10px 10px 0;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+.speech-bubble-bottom::before {
+  bottom: -11px;
+  border-width: 11px 11px 0;
+  border-style: solid;
+  border-color: #d1d5db transparent transparent transparent;
+}
+
+/* → Seta para a esquerda */
+.speech-bubble-left::after,
+.speech-bubble-left::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 0;
+}
+
+.speech-bubble-left::after {
+  border-width: 10px 10px 10px 0;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
+
+.speech-bubble-left::before {
+  left: -11px;
+  border-width: 11px 11px 11px 0;
+  border-style: solid;
+  border-color: transparent #d1d5db transparent transparent;
+}
+
+/* ← Seta para a direita */
+.speech-bubble-right::after,
+.speech-bubble-right::before {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+  width: 0;
+}
+
+.speech-bubble-right::after {
+  border-width: 10px 0 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+}
+
+.speech-bubble-right::before {
+  right: -11px;
+  border-width: 11px 0 11px 11px;
+  border-style: solid;
+  border-color: transparent transparent transparent #d1d5db;
 }
