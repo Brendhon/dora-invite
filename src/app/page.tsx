@@ -73,7 +73,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-background to-yellow-100 relative overflow-hidden flex justify-center">
+    <div className="min-h-screen w-full bg-gradient-to-b from-[#a18cd1] via-[#fbc2eb] to-[#fad0c4] relative overflow-hidden flex justify-center">
       {/* Fundo borrado suave */}
       <div className="absolute inset-0 backdrop-blur-3xl z-0" />
 
