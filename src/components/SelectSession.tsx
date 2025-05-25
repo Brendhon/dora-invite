@@ -21,14 +21,13 @@ export function SelectSession({ movie, onSelect, onComplete }: SelectSessionProp
       onComplete={onComplete}
     >
       <div className="grid gap-6 sm:gap-4 max-w-md w-full">
-
         {movie.rooms.map((room, index) => (
           <AnimatedCard key={room.name + index} index={index}>
-            <div>
-              <h4 className="text-lg font-bold text-purple-800 mb-1">
+            <div className="p-4">
+              <h4 className="text-md font-bold text-purple-800 mb-2">
                 {room.name} 🎬 • {room.format} • {room.language}
               </h4>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
+              <div className="flex flex-wrap gap-3 mt-2">
                 {room.sessions.map((time, index) => (
                   <Button
                     key={time + index + room.name}

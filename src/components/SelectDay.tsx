@@ -35,13 +35,19 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
   ];
 
   return (
-    <DoraStep text={MESSAGES.choose_day} type="thinking" direction="col-reverse" onComplete={onComplete}>
+    <DoraStep
+      text={MESSAGES.choose_day}
+      type="thinking"
+      direction="col-reverse"
+      onComplete={onComplete}
+    >
       <div className="grid grid-cols-1 gap-4 w-full max-w-md">
         {allCards.map(({ key, title, dateStr, index }) => (
           <AnimatedCard
             key={key}
             index={index}
             onClick={() => onSelectDay(dateStr || null)}
+            className="w-full"
           >
             <p className="text-lg font-semibold text-purple-700">{title}</p>
             {dateStr && <p className="text-sm mt-3 text-gray-600">{dateStr}</p>}
@@ -49,5 +55,6 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
         ))}
       </div>
     </DoraStep>
+
   );
 }

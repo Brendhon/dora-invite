@@ -54,7 +54,7 @@ export default function SpeechBubble({
       )}
     >
       <p
-        className="whitespace-pre-line"
+        className="whitespace-pre-line px-2 p-1"
         dangerouslySetInnerHTML={{ __html: displayedText }}
       />
     </div>

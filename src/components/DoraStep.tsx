@@ -39,9 +39,8 @@ export default function DoraStep({
 
   const className = formDirectionClass[direction];
 
-
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-y-8 px-2 w-full max-w-2xl mx-auto">
       <DoraSpeaking
         text={text}
         type={type}
@@ -57,7 +56,7 @@ export default function DoraStep({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.4, delay: 0.8 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
           >
             {children}
           </motion.div>
