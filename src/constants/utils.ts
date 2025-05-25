@@ -1,1 +1,1 @@
-export const TEXT_SPEED = 50; // Velocidade do texto
+export const TEXT_SPEED = 45; // Velocidade do texto

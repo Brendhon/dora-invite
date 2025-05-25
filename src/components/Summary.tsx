@@ -1,5 +1,6 @@
 import { MESSAGES } from "@/constants/messages";
 import DoraSpeaking from "./DoraSpeaking";
+import { getWeekday } from "@/lib/utils";
 
 interface SummaryProps {
   movieTitle: string;
@@ -19,7 +20,7 @@ export function Summary({
   // Form the message
   const message = MESSAGES.summary
     .replace("{movie}", movieTitle)
-    .replace("{day}", day)
+    .replace("{day}", getWeekday(day))
     .replace("{time}", time)
     .replace("{room}", room);
 

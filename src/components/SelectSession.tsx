@@ -20,19 +20,20 @@ export function SelectSession({ movie, onSelect, onComplete }: SelectSessionProp
       direction="col-reverse"
       onComplete={onComplete}
     >
-      <div className="grid gap-4 max-w-md w-full">
+      <div className="grid gap-6 sm:gap-4 max-w-md w-full">
+
         {movie.rooms.map((room, index) => (
           <AnimatedCard key={room.name + index} index={index}>
             <div>
-              <h4 className="text-md font-bold text-purple-800 mb-1">
+              <h4 className="text-lg font-bold text-purple-800 mb-1">
                 {room.name} 🎬 • {room.format} • {room.language}
               </h4>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 mt-2">
                 {room.sessions.map((time, index) => (
                   <Button
                     key={time + index + room.name}
                     onClick={() => onSelect(time)}
-                    className="px-3 py-1 text-sm rounded-lg border border-purple-300 bg-white hover:bg-purple-50 transition text-primary"
+                    className="px-4 py-2 text-base rounded-xl border border-purple-300 bg-white hover:bg-purple-50 transition text-primary"
                   >
                     {time} 🕒
                   </Button>
