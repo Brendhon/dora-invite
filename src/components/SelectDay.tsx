@@ -13,8 +13,8 @@ type DayPickerProps = {
 
 export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerProps) {
   const weekendDays = days.filter((dateStr) => {
-    const [day, month, year] = dateStr.split("/");
-    const dateObj = new Date(`${year}-${month}-${day}`);
+    const [day, month, year] = dateStr.split("/").map(Number);
+    const dateObj = new Date(year, month - 1, day);
     const dayOfWeek = dateObj.getDay();
     return dayOfWeek === 0 || dayOfWeek === 6;
   });
