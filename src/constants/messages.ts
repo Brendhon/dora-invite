@@ -16,7 +16,7 @@ export const MESSAGES = {
   O cinema ainda não definiu a programação, então não temos informações sobre o filme. 😕<br/>
   Mas não se preocupe! 😉<br/>
   Assim que tivermos novidades, eu aviso você! 📢<br/>
-  Fique de olho, aventureira! 👀<br/><br/>
+  Fique de olho, aventureira! 👀<br/>
   Está vendo o botãozinho roxo ali embaixo? 🟣<br/>
   Clique nele para me avisar da sua escolha e a gente continua a aventura! 🚀`,
 

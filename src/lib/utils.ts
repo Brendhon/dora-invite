@@ -16,14 +16,17 @@ export const isNumber = (value: any): value is number => typeof value === 'numbe
  * @param {string} dateStr - Date string in format "dd/mm/yyyy"
  * @returns {string} - Weekday name with first letter uppercase
  */
-export const getWeekday = (dateStr: string) => {
-  const [day, month, year] = dateStr.split("/");
-  const date = new Date(`${year}-${month}-${day}`);
+export const getWeekday = (dateStr: string): string => {
+  const [day, month, year] = dateStr.split("/").map(Number);
+
+  const date = new Date(year, month - 1, day);
+
   const formatted = new Intl.DateTimeFormat("pt-BR", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   }).format(date);
+
   return formatted.charAt(0).toUpperCase() + formatted.slice(1);
 }
