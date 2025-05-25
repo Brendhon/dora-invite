@@ -50,11 +50,12 @@ export default function Home() {
 
     if (selectedDay && selectedMovie && selectedSession) {
       message = `¡Hola! 🥳 Eu escolhi um filme pra nossa aventura no Cineart! 🍿
-      📍 Nossa missão:
-        - 🎬 *Filme:* ${selectedMovie.title}
-        - 📅 *Dia:* ${getWeekday(selectedDay)}
-        - ⏰ *Hora:* ${selectedSession}
-      Vamos nessa? Vai ser super divertido! 🎒✨`;
+
+    🎬 *Filme:* ${selectedMovie.title}
+    📅 *Dia:* ${getWeekday(selectedDay)}
+    ⏰ *Hora:* ${selectedSession}
+
+    Vamos nessa? Vai ser super divertido! 🎒✨`;
     }
 
     const phone = "5535997164703";
