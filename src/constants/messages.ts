@@ -9,7 +9,6 @@ export const MESSAGES = {
 
   choose_day: `Hmm, estou pensando... 🤔<br/>
   Qual será o melhor dia para ir ao cinema? 📅<br/>
-  Sábado ou domingo?<br/>
   Vamos olhar a agenda juntinhas! 🌟`,
 
   other_day_message: `Você escolheu outro dia! 📆<br/>

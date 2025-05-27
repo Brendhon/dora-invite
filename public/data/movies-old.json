@@ -1,0 +1,170 @@
+[
+  {
+    "title": "Thunderbolts",
+    "genre": [
+      "Ação",
+      "Aventura"
+    ],
+    "dates": [
+      "23/04/2025",
+      "24/04/2025",
+      "25/04/2025",
+      "26/04/2025",
+      "27/04/2025",
+      "28/04/2025"
+    ],
+    "ageRating": 14,
+    "rooms": [
+      {
+        "name": "Sala 02",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "13:30"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Missão Impossível: O Acerto Final",
+    "genre": [
+      "Ação",
+      "Aventura"
+    ],
+    "dates": [
+      "23/04/2025",
+      "24/04/2025",
+      "25/04/2025",
+      "26/04/2025",
+      "27/04/2025",
+      "28/04/2025"
+    ],
+    "ageRating": 14,
+    "rooms": [
+      {
+        "name": "Sala 02",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "20:40"
+        ]
+      },
+      {
+        "name": "Sala 04",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "15:10",
+          "20:45"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Karate Kid Lendas",
+    "genre": [
+      "Comédia",
+      "Drama",
+      "Artes Marciais"
+    ],
+    "dates": [
+      "23/04/2025",
+      "24/04/2025",
+      "25/04/2025",
+      "26/04/2025",
+      "27/04/2025",
+      "28/04/2025"
+    ],
+    "ageRating": 12,
+    "rooms": [
+      {
+        "name": "Sala 04",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "13:20"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Lilo & Stitch",
+    "genre": [
+      "Aventura"
+    ],
+    "dates": [
+      "23/04/2025",
+      "24/04/2025",
+      "25/04/2025",
+      "26/04/2025",
+      "27/04/2025",
+      "28/04/2025"
+    ],
+    "ageRating": 10,
+    "rooms": [
+      {
+        "name": "Sala 01",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "14:10",
+          "16:30",
+          "18:50",
+          "21:05"
+        ]
+      },
+      {
+        "name": "Sala 02",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "16:00",
+          "18:20"
+        ]
+      },
+      {
+        "name": "Sala 03",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "16:10",
+          "20:50"
+        ]
+      },
+      {
+        "name": "Sala 03",
+        "format": "3D",
+        "language": "Dublado",
+        "sessions": [
+          "13:50",
+          "18:30"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Premonição 6: Laços de sangue",
+    "genre": [
+      "Terror"
+    ],
+    "dates": [
+      "23/04/2025",
+      "24/04/2025",
+      "25/04/2025",
+      "26/04/2025",
+      "27/04/2025",
+      "28/04/2025"
+    ],
+    "ageRating": 18,
+    "rooms": [
+      {
+        "name": "Sala 04",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "18:25"
+        ]
+      }
+    ]
+  }
+]
