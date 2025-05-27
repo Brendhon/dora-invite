@@ -48,7 +48,7 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
             onClick={() => onSelectDay(value || null)}
             className="w-full p-6"
           >
-            <p className="text-lg font-semibold text-primary">{title}</p>
+            <p className="text-lg font-bold text-primary">{title}</p>
             {description && (
               <p className="text-sm mt-1 text-gray-600">
                 {description}

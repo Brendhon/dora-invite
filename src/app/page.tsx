@@ -81,7 +81,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-[#a18cd1] via-[#fbc2eb] to-[#fad0c4] relative overflow-hidden flex justify-center">
+    <div className="relative overflow-hidden flex justify-center min-h-screen w-full ">
       <div className="absolute inset-0 backdrop-blur-3xl z-0" />
       <div
         className={cn(
@@ -165,7 +165,7 @@ export default function Home() {
               <StepWrapper
                 key="footer"
                 stepKey="footer"
-                className="flex w-full justify-between mt-6"
+                className="flex w-full justify-between mt-8"
               >
                 {step >= 1 && (
                   <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
