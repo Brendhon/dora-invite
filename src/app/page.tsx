@@ -1,12 +1,12 @@
 "use client";
 
 import Button from "@/components/Button";
+import { DoraLoading } from "@/components/DoraLoading";
 import { Error } from "@/components/Error";
 import { OtherDay } from "@/components/OtherDay";
 import SelectDay from "@/components/SelectDay";
 import { SelectMovie } from "@/components/SelectMovie";
 import { SelectSession } from "@/components/SelectSession";
-import { Spinner } from "@/components/spinner";
 import { StepWrapper } from "@/components/StepWrapper";
 import { Summary } from "@/components/Summary";
 import Welcome from "@/components/Welcome";
@@ -93,7 +93,7 @@ export default function Home() {
         <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6 overflow-y-auto scrollbar-hidden overflow-x-hidden">
           {loading && (
             <StepWrapper key="loading" stepKey="loading" className="m-auto flex items-center justify-center">
-              <Spinner className="w-[60px] h-[60px] text-primary animate-spin" />
+              <DoraLoading />
             </StepWrapper>
           )}
           {error && !loading && (

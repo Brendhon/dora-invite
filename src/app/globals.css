@@ -171,3 +171,17 @@ strong {
   border-style: solid;
   border-color: transparent transparent transparent #d1d5db;
 }
+
+.dot-animated::after {
+  content: '';
+  display: inline-block;
+  animation: dotJump 1s steps(4, end) infinite;
+}
+
+@keyframes dotJump {
+  0%   { content: ''; }
+  25%  { content: '.'; }
+  50%  { content: '..'; }
+  75%  { content: '...'; }
+  100% { content: ''; }
+}
