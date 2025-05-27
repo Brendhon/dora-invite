@@ -23,13 +23,13 @@ export default function Home() {
   const [error, setError] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
 
-  // Estados para armazenar as escolhas
+  // States to store user choices
   const [otherDay, setOtherDay] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
   const [selectedMovie, setSelectedMovie] = useState<MovieSession | null>(null);
   const [selectedSession, setSelectedSession] = useState<string>('');
 
-  // Dados dos filmes
+  // Movie data
   const [movies, setMovies] = useState<MovieSession[]>([]);
 
   useEffect(() => {
@@ -42,10 +42,10 @@ export default function Home() {
       .finally(() => setLoading(false));
   }, []);
 
-  // Obter os dias únicos de todos os filmes
+  // Get unique days from all movies
   const allDays = Array.from(new Set(movies.flatMap(m => m.dates))).sort();
 
-  // Funções para avançar e retroceder os passos
+  // Functions to go to the next and previous steps
   const nextStep = () => {
     setCanInteract(false);
     setStep((s) => s + 1);
@@ -72,7 +72,7 @@ export default function Home() {
     window.open(url, "_blank");
   };
 
-  // Selecionar dia
+  // Select day
   const handleSelectDay = (day: string | null) => {
     setSelectedDay(day);
     nextStep();
@@ -168,17 +168,17 @@ export default function Home() {
               <StepWrapper
                 key="footer"
                 stepKey="footer"
-                className="flex w-full justify-between p-4"
+                className="flex w-full justify-between mt-6"
               >
                 {step >= 1 && (
                   <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
-                    Voltar
+                    🔙 Voltar
                   </Button>
                 )}
 
                 {(step > 3 || otherDay) && (
                   <Button onClick={handleConfirm} >
-                    Confirmar
+                    🎉 Sim, vamos lá!
                   </Button>
                 )}
               </StepWrapper>
@@ -190,4 +190,3 @@ export default function Home() {
     </div>
   );
 }
-
