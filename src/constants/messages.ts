@@ -34,4 +34,14 @@ export const MESSAGES = {
   </div>
   Está vendo o botãozinho roxo? 🟣<br/>
   Clique nele para continuarmos nossa aventura! 🚀`,
+
+  other_day_confirmation: "¡Hola! 😊 Vamos escolher outro dia para a nossa aventura no cinema? 🎬✨",
+
+  confirmation: `¡Hola! 🥳 Eu escolhi um filme pra nossa aventura no Cineart! 🍿
+  
+    🎬 *Filme:* {movie}
+    📅 *Dia:* {day}
+    ⏰ *Hora:* {time}
+  
+  Vamos nessa? 🎒✨`
 };

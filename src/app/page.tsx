@@ -7,6 +7,7 @@ import { SelectMovie } from "@/components/SelectMovie";
 import { SelectSession } from "@/components/SelectSession";
 import { Summary } from "@/components/Summary";
 import Welcome from "@/components/Welcome";
+import { MESSAGES } from "@/constants/messages";
 import { fetchMovies } from "@/lib/movies";
 import { cn, getWeekday } from "@/lib/utils";
 import { MovieSession, Room } from "@/types/movie";
@@ -46,16 +47,13 @@ export default function Home() {
   };
 
   const handleConfirm = () => {
-    let message = "¡Hola! 😊 Vamos escolher outro dia para a nossa aventura no cinema? 🎬✨";
+    let message = MESSAGES.other_day_confirmation;
 
     if (selectedDay && selectedMovie && selectedSession) {
-      message = `¡Hola! 🥳 Eu escolhi um filme pra nossa aventura no Cineart! 🍿
-
-  🎬 *Filme:* ${selectedMovie.title}
-  📅 *Dia:* ${getWeekday(selectedDay)}
-  ⏰ *Hora:* ${selectedSession}
-
-Vamos nessa? 🎒✨`;
+      message = MESSAGES.confirmation
+        .replace("{day}", getWeekday(selectedDay))
+        .replace("{movie}", selectedMovie.title)
+        .replace("{time}", selectedSession);
     }
 
     const phone = "5535997164703";
