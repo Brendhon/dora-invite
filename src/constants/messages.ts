@@ -35,13 +35,19 @@ export const MESSAGES = {
   Está vendo o botãozinho roxo? 🟣<br/>
   Clique nele para continuarmos nossa aventura! 🚀`,
 
+  error_message: `Opa! Algo deu errado ao buscar as sessões de cinema... 😵‍💫<br/>
+  Parece que meu mapa ficou embaralhado! 🗺️❌<br/>
+  Mas não se preocupe, aventureira! Eu já estou procurando o caminho certo. 🧭<br/>
+  Tente novamente em alguns minutinhos, tá bom? ⏳<br/>
+  Juntas, a gente chega lá! 💪🎒`,
+
   other_day_confirmation: "¡Hola! 😊 Vamos escolher outro dia para a nossa aventura no cinema? 🎬✨",
 
   confirmation: `¡Hola! 🥳 Eu escolhi um filme pra nossa aventura no Cineart! 🍿
   
-    🎬 *Filme:* {movie}
-    📅 *Dia:* {day}
-    ⏰ *Hora:* {time}
+  🎬 *Filme:* {movie}
+  📅 *Dia:* {day}
+  ⏰ *Hora:* {time}
   
-  Vamos nessa? 🎒✨`
+Vamos nessa? 🎒✨`
 };

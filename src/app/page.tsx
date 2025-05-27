@@ -1,22 +1,27 @@
 "use client";
 
 import Button from "@/components/Button";
+import { Error } from "@/components/Error";
 import { OtherDay } from "@/components/OtherDay";
 import SelectDay from "@/components/SelectDay";
 import { SelectMovie } from "@/components/SelectMovie";
 import { SelectSession } from "@/components/SelectSession";
+import { Spinner } from "@/components/spinner";
+import { StepWrapper } from "@/components/StepWrapper";
 import { Summary } from "@/components/Summary";
 import Welcome from "@/components/Welcome";
 import { MESSAGES } from "@/constants/messages";
 import { fetchMovies } from "@/lib/movies";
 import { cn, getWeekday } from "@/lib/utils";
 import { MovieSession, Room } from "@/types/movie";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const [step, setStep] = useState(0);
   const [canInteract, setCanInteract] = useState(false);
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState(true);
 
   // Estados para armazenar as escolhas
   const [otherDay, setOtherDay] = useState(false);
@@ -28,7 +33,13 @@ export default function Home() {
   const [movies, setMovies] = useState<MovieSession[]>([]);
 
   useEffect(() => {
-    fetchMovies().then(setMovies);
+    fetchMovies()
+      .then((data) => {
+        setMovies(data);
+        setError(false);
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
   }, []);
 
   // Obter os dias únicos de todos os filmes
@@ -70,10 +81,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-[#a18cd1] via-[#fbc2eb] to-[#fad0c4] relative overflow-hidden flex justify-center">
-      {/* Fundo borrado suave */}
       <div className="absolute inset-0 backdrop-blur-3xl z-0" />
-
-      {/* Container simulado de iPhone */}
       <div
         className={cn(
           "relative bg-white shadow-xl border border-gray-200 overflow-hidden z-10",
@@ -82,95 +90,67 @@ export default function Home() {
         )}
       >
         <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6 overflow-y-auto scrollbar-hidden overflow-x-hidden">
-          <AnimatePresence mode="wait">
+          {loading && (
+            <StepWrapper key="loading" stepKey="loading" className="m-auto flex items-center justify-center">
+              <Spinner className="w-20 h-20 text-primary animate-spin" />
+            </StepWrapper>
+          )}
+          {error && !loading && (
+            <StepWrapper key="error" stepKey="error">
+              <Error onComplete={() => setCanInteract(true)} />
+            </StepWrapper>
+          )}
+          {!error && !loading && <AnimatePresence mode="wait">
             {step === 0 && (
-              <motion.div
-                key="welcome"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <StepWrapper key="welcome" stepKey="welcome">
                 <Welcome onNext={nextStep} onComplete={() => setCanInteract(true)} />
-              </motion.div>
+              </StepWrapper>
             )}
 
             {step === 1 && (
-              <motion.div
-                key="select-day"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
-                <SelectDay days={allDays} onSelectDay={handleSelectDay} onComplete={() => setCanInteract(true)} />
-              </motion.div>
+              <StepWrapper key="select-day" stepKey="select-day">
+                <SelectDay
+                  days={allDays}
+                  onSelectDay={handleSelectDay}
+                  onComplete={() => setCanInteract(true)}
+                />
+              </StepWrapper>
             )}
 
             {otherDay && (
-              <motion.div
-                key="other-day"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <StepWrapper key="other-day" stepKey="other-day">
                 <OtherDay onComplete={() => setCanInteract(true)} />
-              </motion.div>
+              </StepWrapper>
             )}
 
             {step === 2 && selectedDay && (
-              <motion.div
-                key="select-movie"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <StepWrapper key="select-movie" stepKey="select-movie">
                 <SelectMovie
-                  onComplete={() => setCanInteract(true)}
                   movies={movies}
                   onSelect={(movie) => {
                     setSelectedMovie(movie);
                     nextStep();
                   }}
+                  onComplete={() => setCanInteract(true)}
                 />
-              </motion.div>
+              </StepWrapper>
             )}
 
             {step === 3 && selectedMovie && (
-              <motion.div
-                key="select-session"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <StepWrapper key="select-session" stepKey="select-session">
                 <SelectSession
-                  onComplete={() => setCanInteract(true)}
                   movie={selectedMovie}
                   onSelect={(session) => {
                     setSelectedSession(session);
                     nextStep();
                   }}
+                  onComplete={() => setCanInteract(true)}
                 />
-              </motion.div>
+              </StepWrapper>
             )}
 
             {step === 4 && selectedDay && selectedMovie && selectedSession && (
-              <motion.div
-                key="summary"
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <StepWrapper key="summary" stepKey="summary">
                 <Summary
                   day={selectedDay}
                   movieTitle={selectedMovie.title}
@@ -182,16 +162,13 @@ export default function Home() {
                     )?.name || ""
                   }
                 />
-              </motion.div>
+              </StepWrapper>
             )}
-
             {canInteract &&
-              <motion.div
+              <StepWrapper
+                key="footer"
+                stepKey="footer"
                 className="flex w-full justify-between p-4"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 30 }}
-                transition={{ duration: 0.3, delay: 0.5 }}
               >
                 {step >= 1 && (
                   <Button onClick={prevStep} className="text-gray-500 bg-white border-2 border-gray-300 hover:bg-gray-100 transition">
@@ -204,9 +181,10 @@ export default function Home() {
                     Confirmar
                   </Button>
                 )}
-              </motion.div>
+              </StepWrapper>
             }
           </AnimatePresence>
+          }
         </main>
       </div>
     </div>

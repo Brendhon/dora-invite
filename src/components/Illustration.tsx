@@ -7,18 +7,25 @@ interface Props {
   width?: number;
 }
 
-export default ({ className = '', src, width = 400 }: Props) => {
-  // Return the illustration component
+export default function Illustration({
+  className = '',
+  src,
+  width = 400,
+}: Props) {
   return (
-    <div className={cn("flex-col items-center flex", className)}>
+    <div className={cn("flex flex-col items-center", className)}>
       <Image
-        alt='Illustration'
+        alt="Illustration"
         priority
+        src={`/doras/${src}`}
         width={width}
         height={width}
-        src={`/doras/${src}`}
-        className={cn("h-auto object-contain", `w-[${width}px]`)}
+        style={{
+          width: `${width}px`,
+          height: 'auto',
+        }}
+        className="object-contain"
       />
     </div>
-  )
-};
+  );
+}
