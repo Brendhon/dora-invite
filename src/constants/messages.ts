@@ -12,13 +12,13 @@ export const MESSAGES = {
   Vamos olhar a agenda juntinhas! 🌟`,
 
   days_of_week: [
+    `Último dia da semana merece um cineminha especial 🎥!`, // Domingo
     `Começando a semana com um cineminha 🎬✨?`,        // Segunda
     `Terça é dia de aventura no cinema 🍿🗺️?`,          // Terça
     `No meio da semana... que tal um filme 🎥💭?`,       // Quarta
     `Quinta animada com pipoca 🍿 e diversão 🎞️?`,      // Quinta
     `Sextou com cinema 🥳 e alegria 🍫?`,                // Sexta
     `Que tal sábado de filme 🌟 e diversão 🍿?`,         // Sábado
-    `Último dia da semana merece um cineminha especial 🎥!`, // Domingo
   ],
 
   other_day: {

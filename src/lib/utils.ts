@@ -52,7 +52,7 @@ export const getWeekday = (dateStr: string): string => {
 export const getDoraDayMessage = (dateStr: string): string => {
   const date = parseDate(dateStr).toJSDate();
   const dayOfWeek = date.getDay(); // 0 = Domingo, 6 = Sábado
-  return MESSAGES.days_of_week[dayOfWeek - 1];
+  return MESSAGES.days_of_week[dayOfWeek];
 };
 
 
@@ -90,6 +90,9 @@ export function filterWeekendDays(days: string[]): string[] {
     return weekday === 6 || weekday === 7; // 6 = Saturday, 7 = Sunday
   });
 
-  // If no weekends found, return all days
-  return weekends.length > 0 ? weekends : days;
+  // If no weekends are found, return all days
+  const result = weekends.length > 0 ? weekends : days;
+
+  // Sort the result by date
+  return result.sort((a, b) => parseDate(a).toMillis() - parseDate(b).toMillis());
 }
