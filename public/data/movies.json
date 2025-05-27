@@ -106,5 +106,31 @@
         ]
       }
     ]
+  },
+  {
+    "title": "Confinado",
+    "genre": [
+      "Ação",
+      "Suspense"
+    ],
+    "ageRating": 16,
+    "dates": [
+      "29/05/2025",
+      "30/05/2025",
+      "31/05/2025",
+      "01/06/2025",
+      "02/06/2025",
+      "03/06/2025"
+    ],
+    "rooms": [
+      {
+        "name": "Sala 03",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "19:10"
+        ]
+      }
+    ]
   }
 ]
