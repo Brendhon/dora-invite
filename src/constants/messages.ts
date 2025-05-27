@@ -12,12 +12,10 @@ export const MESSAGES = {
   Vamos olhar a agenda juntinhas! 🌟`,
 
   other_day_message: `Você escolheu outro dia! 📆<br/>
-  O cinema ainda não definiu a programação, então não temos informações sobre o filme. 😕<br/>
-  Mas não se preocupe! 😉<br/>
-  Assim que tivermos novidades, eu aviso você! 📢<br/>
-  Fique de olho, aventureira! 👀<br/>
-  Está vendo o botãozinho roxo ali embaixo? 🟣<br/>
-  Clique nele para me avisar da sua escolha e a gente continua a aventura! 🚀`,
+  Ainda não temos a programação, mas não se preocupe! 😉<br/>
+  O cinema atualiza tudo na próxima quinta-feira! 🗓️✨<br/>
+  Fique de olho e clique no botãozinho roxo pra me avisar da sua escolha! 🟣<br/>
+  A aventura continua em breve! 🚀`,
 
   select_time: `Legal! 🥳<br/>
   Agora me ajude a escolher um bom horário ⏰ para assistir <strong>{movie}</strong>! 🍿🎬`,
