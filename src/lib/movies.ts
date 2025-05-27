@@ -1,11 +1,11 @@
-import { MovieSession } from '@/types/movie';
+import { Movie } from '@/types/movie';
 import { DateTime } from 'luxon';
 import { hasValidDates } from './utils';
 
 const CACHE_KEY = 'cineart_cache';
 const CACHE_EXP_KEY = 'cineart_cache_exp';
 
-export async function fetchMovies(): Promise<MovieSession[]> {
+export async function fetchMovies(): Promise<Movie[]> {
   // Check localStorage for cached data
   const cached = localStorage.getItem(CACHE_KEY);
   const exp = localStorage.getItem(CACHE_EXP_KEY);
@@ -16,7 +16,7 @@ export async function fetchMovies(): Promise<MovieSession[]> {
   // If cached data exists and is not expired, return it
   if (cached && exp && DateTime.fromISO(exp) > now) {
     // Parse the cached data
-    const data: MovieSession[] = JSON.parse(cached);
+    const data: Movie[] = JSON.parse(cached);
     
     // Log that we are using cached data
     console.log('Using cached data');
@@ -32,7 +32,7 @@ export async function fetchMovies(): Promise<MovieSession[]> {
   if (!res.ok) throw new Error('Erro ao buscar sessões');
 
   // Parse the response as MovieSession array
-  const fresh: MovieSession[] = await res.json();
+  const fresh: Movie[] = await res.json();
 
   // Get 1 day from now for cache expiration with time 00:00
   const expiration = now.plus({ days: 1 }).startOf('day');

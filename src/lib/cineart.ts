@@ -1,4 +1,4 @@
-import { MovieSession, Room } from '@/types/movie';
+import { Movie, Room } from '@/types/movie';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 import { DateTime } from 'luxon';
@@ -7,10 +7,10 @@ const BASE_URL = 'https://www.cineart.com.br/cinema/cineart-serra-sul';
 
 /**
  * Make web scraping to get movie sessions from Cineart Serra Sul
- * @returns {Promise<MovieSession[]>} - Array of movie sessions
+ * @returns {Promise<Movie[]>} - Array of movie sessions
  * @throws {Error} - If data is not found in the page
  */
-export async function getCinemaSessions(): Promise<MovieSession[]> {
+export async function getCinemaSessions(): Promise<Movie[]> {
   const { data } = await axios.get(BASE_URL);
   const $ = cheerio.load(data);
   const rawJson = $('cinema-prog').attr(':cinemas');
@@ -21,7 +21,7 @@ export async function getCinemaSessions(): Promise<MovieSession[]> {
   const day = jsonData[dayKey];
   const filmes = day.FILMES;
 
-  const movieSessions: MovieSession[] = [];
+  const movieSessions: Movie[] = [];
 
   for (const movieId in filmes) {
     const filme = filmes[movieId];

@@ -1,4 +1,5 @@
-import { MovieSession } from '@/types/movie';
+import { MESSAGES } from '@/constants/messages';
+import { Movie } from '@/types/movie';
 import { ClassValue, clsx } from 'clsx';
 import { DateTime } from 'luxon';
 import { twMerge } from 'tailwind-merge';
@@ -44,11 +45,23 @@ export const getWeekday = (dateStr: string): string => {
 }
 
 /**
+ * Get a message based on the day of the week from a date string
+ * @param {string} dateStr - Date string in format "dd/mm/yyyy"
+ * @returns {string} - Message for the specific day of the week
+ */
+export const getDoraDayMessage = (dateStr: string): string => {
+  const date = parseDate(dateStr).toJSDate();
+  const dayOfWeek = date.getDay(); // 0 = Domingo, 6 = Sábado
+  return MESSAGES.days_of_week[dayOfWeek - 1];
+};
+
+
+/**
  * Check if any movie session has valid dates (i.e., dates that are today or in the future)
- * @param {MovieSession[]} data - Array of movie sessions
+ * @param {Movie[]} data - Array of movie sessions
  * @returns {boolean} - True if there are valid dates, false otherwise
  */
-export function hasValidDates(data: MovieSession[]): boolean {
+export function hasValidDates(data: Movie[]): boolean {
   const now = DateTime.now().setZone('America/Sao_Paulo');
   return data.some(movie => movie.dates.some(d => parseDate(d) >= now.startOf('day')));
 }

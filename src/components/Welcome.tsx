@@ -10,7 +10,7 @@ interface WelcomeProps {
 export default function Welcome({ onNext, onComplete }: WelcomeProps) {
   return (
     <DoraStep text={MESSAGES.greeting} type="welcome"  onComplete={onComplete} >
-      <Button onClick={onNext}>🎒 Vamos lá!</Button>
+      <Button onClick={onNext}>🚀 Vamos nessa!</Button>
     </DoraStep>
   );
 }

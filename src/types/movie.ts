@@ -1,4 +1,4 @@
-export interface MovieSession {
+export interface Movie {
   title: string;
   genre: string[];
   ageRating: number;
@@ -11,4 +11,9 @@ export interface Room {
   format: "2D" | "3D";
   language: "Dublado" | "Legendado";
   sessions: string[]; // formato: "hh:mm"
+}
+
+export interface Session {
+  time: string; // formato: "hh:mm"
+  room: string; // nome da sala
 }

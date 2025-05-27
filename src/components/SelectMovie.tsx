@@ -1,13 +1,13 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
-import { MovieSession } from "@/types/movie";
+import { Movie } from "@/types/movie";
 import AnimatedCard from "./AnimatedCard";
 import DoraStep from "./DoraStep";
 
 interface SelectMovieProps {
-  movies: MovieSession[];
-  onSelect: (movie: MovieSession) => void;
+  movies: Movie[];
+  onSelect: (movie: Movie) => void;
   onComplete?: () => void;
 }
 

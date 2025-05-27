@@ -13,7 +13,7 @@ import Welcome from "@/components/Welcome";
 import { MESSAGES } from "@/constants/messages";
 import { fetchMovies } from "@/lib/movies";
 import { cn, getWeekday } from "@/lib/utils";
-import { MovieSession, Room } from "@/types/movie";
+import { Movie, Session } from "@/types/movie";
 import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -26,11 +26,11 @@ export default function Home() {
   // States to store user choices
   const [otherDay, setOtherDay] = useState(false);
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
-  const [selectedMovie, setSelectedMovie] = useState<MovieSession | null>(null);
-  const [selectedSession, setSelectedSession] = useState<string>('');
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  const [selectedSession, setSelectedSession] = useState<Session | null>(null);
 
   // Movie data
-  const [movies, setMovies] = useState<MovieSession[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     fetchMovies()
@@ -64,7 +64,8 @@ export default function Home() {
       message = MESSAGES.confirmation
         .replace("{day}", getWeekday(selectedDay))
         .replace("{movie}", selectedMovie.title)
-        .replace("{time}", selectedSession);
+        .replace("{time}", selectedSession.time)
+        .replace("{room}", selectedSession.room);
     }
 
     const phone = "5535997164703";
@@ -154,13 +155,9 @@ export default function Home() {
                 <Summary
                   day={selectedDay}
                   movieTitle={selectedMovie.title}
-                  time={selectedSession}
+                  time={selectedSession.time}
                   onComplete={() => setCanInteract(true)}
-                  room={
-                    selectedMovie.rooms.find((room: Room) =>
-                      room.sessions.includes(selectedSession)
-                    )?.name || ""
-                  }
+                  room={selectedSession.room}
                 />
               </StepWrapper>
             )}

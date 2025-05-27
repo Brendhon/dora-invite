@@ -1,7 +1,7 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
-import { filterWeekendDays, getWeekday, isFutureOrToday } from "@/lib/utils";
+import { filterWeekendDays, getDoraDayMessage, getWeekday, isFutureOrToday } from "@/lib/utils";
 import AnimatedCard from "./AnimatedCard";
 import DoraStep from "./DoraStep";
 
@@ -19,14 +19,16 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
   const allCards = [
     ...validDays.map((dateStr, idx) => ({
       key: dateStr,
+      value: dateStr,
       title: getWeekday(dateStr),
-      dateStr,
+      description: getDoraDayMessage(dateStr),
       index: idx,
     })),
     {
       key: "outro",
-      title: "Outro dia",
-      dateStr: undefined,
+      value: undefined,
+      title: MESSAGES.other_day.title,
+      description: MESSAGES.other_day.description,
       index: validDays.length,
     },
   ];
@@ -39,15 +41,19 @@ export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerPr
       onComplete={onComplete}
     >
       <div className="grid grid-cols-1 gap-6 w-full max-w-md">
-        {allCards.map(({ key, title, dateStr, index }) => (
+        {allCards.map(({ key, title, value, description, index }) => (
           <AnimatedCard
             key={key}
             index={index}
-            onClick={() => onSelectDay(dateStr || null)}
+            onClick={() => onSelectDay(value || null)}
             className="w-full p-6"
           >
             <p className="text-lg font-semibold text-primary">{title}</p>
-            {dateStr && <p className="text-sm mt-1 text-gray-600">{dateStr}</p>}
+            {description && (
+              <p className="text-sm mt-1 text-gray-600">
+                {description}
+              </p>
+            )}
           </AnimatedCard>
         ))}
       </div>

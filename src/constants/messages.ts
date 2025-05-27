@@ -11,6 +11,21 @@ export const MESSAGES = {
   Qual será o melhor dia para ir ao cinema? 📅<br/>
   Vamos olhar a agenda juntinhas! 🌟`,
 
+  days_of_week: [
+    `Começando a semana com um cineminha 🎬✨?`,        // Segunda
+    `Terça é dia de aventura no cinema 🍿🗺️?`,          // Terça
+    `No meio da semana... que tal um filme 🎥💭?`,       // Quarta
+    `Quinta animada com pipoca 🍿 e diversão 🎞️?`,      // Quinta
+    `Sextou com cinema 🥳 e alegria 🍫?`,                // Sexta
+    `Que tal sábado de filme 🌟 e diversão 🍿?`,         // Sábado
+    `Último dia da semana merece um cineminha especial 🎥!`, // Domingo
+  ],
+
+  other_day: {
+    title: "📆 Outro dia!",
+    description: `Sem pressa, escolhe outro dia que o cinema te espera! 🍿😉`
+  },
+
   other_day_message: `Você escolheu outro dia! 📆<br/>
   Ainda não temos a programação, mas não se preocupe! 😉<br/>
   O cinema atualiza tudo na próxima quinta-feira! 🗓️✨<br/>
@@ -48,6 +63,7 @@ export const MESSAGES = {
   🎬 *Filme:* {movie}
   📅 *Dia:* {day}
   ⏰ *Hora:* {time}
+  🏟️ *Sala:* {room}
   
 Vamos nessa? 🎒✨`
 };
