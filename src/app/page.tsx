@@ -92,7 +92,7 @@ export default function Home() {
         <main className="relative w-full h-full flex flex-col items-center justify-between text-center p-6 overflow-y-auto scrollbar-hidden overflow-x-hidden">
           {loading && (
             <StepWrapper key="loading" stepKey="loading" className="m-auto flex items-center justify-center">
-              <Spinner className="w-20 h-20 text-primary animate-spin" />
+              <Spinner className="w-[60px] h-[60px] text-primary animate-spin" />
             </StepWrapper>
           )}
           {error && !loading && (
