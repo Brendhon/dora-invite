@@ -20,7 +20,7 @@ export default ({
   return (
     <Button
       className={cn(
-        "relative flex items-center justify-center gap-2 px-5 py-3 rounded-2xl font-medium text-white text-base bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all duration-200 shadow-md",
+        "relative flex items-center justify-center gap-2 px-4 py-3 rounded-2xl font-medium text-white text-base bg-purple-600 hover:bg-purple-700 active:scale-95 transition-all duration-200 shadow-md",
         "disabled:opacity-50 disabled:cursor-not-allowed",
         className
       )}
