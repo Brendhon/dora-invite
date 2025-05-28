@@ -1,7 +1,7 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
-import { filterWeekendDays, getDoraDayMessage, getWeekday, isFutureOrToday } from "@/lib/utils";
+import { getDoraDayMessage, getWeekday, isFutureOrToday, parseDate } from "@/lib/utils";
 import AnimatedCard from "./AnimatedCard";
 import DoraStep from "./DoraStep";
 
@@ -13,7 +13,9 @@ type DayPickerProps = {
 
 export default function SelectDay({ days, onSelectDay, onComplete }: DayPickerProps) {
   // Filter out days that are not today or in the future
-  const validDays = filterWeekendDays(days.filter(isFutureOrToday));
+  const validDays = days
+    .filter(isFutureOrToday)
+    .sort((a, b) => parseDate(a).toMillis() - parseDate(b).toMillis())
 
   // Filter out days that are not today or in the future
   const allCards = [

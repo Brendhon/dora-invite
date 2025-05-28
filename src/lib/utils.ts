@@ -19,7 +19,7 @@ export const isNumber = (value: any): value is number => typeof value === 'numbe
  * @param {string} dateStr - Date string in format "dd/mm/yyyy"
  * @returns {DateTime} - Luxon DateTime object in 'America/Sao_Paulo' timezone
  */
-function parseDate(dateStr: string): DateTime {
+export function parseDate(dateStr: string): DateTime {
   const [day, month, year] = dateStr.split('/').map(Number);
   return DateTime.fromObject({ day, month, year }, { zone: 'America/Sao_Paulo' });
 }
