@@ -39,7 +39,7 @@ export default function Home() {
         setError(false); // Reset error state on successful fetch
       })
       .catch(() => setError(true)) // Handle error fetching movies
-      .finally(() => setTimeout(() => setLoading(false), 2000)); // Simulate loading delay
+      .finally(() => setTimeout(() => setLoading(false), 1000)); // Simulate loading delay
   }, []);
 
   // Get unique days from all movies
