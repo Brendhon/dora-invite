@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export function DoraLoading() {
   return (
     <div className="flex flex-col items-center gap-2 w-full">
@@ -8,15 +6,17 @@ export function DoraLoading() {
         <span className="dot-animated w-5 flex items-center justify-left" />
       </span>
       <div className="flex items-center justify-center">
-      <Image
-        priority
-        src="/dora-loading.gif"
-        alt="Carregando com Dora"
-        className="object-contain"
-        width={128}
-        height={128}
-      />
-
+        <video
+          src="/dora-loading.webm"
+          autoPlay
+          loop
+          muted
+          playsInline
+          width={150}
+          height={150}
+          className="object-contain"
+          aria-label="Carregando com Dora"
+        />
       </div>
     </div>
   );

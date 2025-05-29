@@ -35,11 +35,11 @@ export default function Home() {
   useEffect(() => {
     fetchMovies()
       .then((data) => {
-        setMovies(data);
-        setError(false);
+        setMovies(data); // Set fetched movies
+        setError(false); // Reset error state on successful fetch
       })
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
+      .catch(() => setError(true)) // Handle error fetching movies
+      .finally(() => setTimeout(() => setLoading(false), 2000)); // Simulate loading delay
   }, []);
 
   // Get unique days from all movies
