@@ -1,10 +1,14 @@
 'use client';
 
 import { MESSAGES } from "@/constants/messages";
-import { Movie, Session } from "@/types/movie";
+import { Movie, Room, Session } from "@/types/movie";
 import AnimatedCard from "./AnimatedCard";
 import Button from "./Button";
 import DoraStep from "./DoraStep";
+
+const formatRoomString = (room: Room): string => {
+  return `${room.name} • ${room.format} • ${room.language}`;
+};
 
 interface SelectSessionProps {
   movie: Movie;
@@ -25,13 +29,13 @@ export function SelectSession({ movie, onSelect, onComplete }: SelectSessionProp
           <AnimatedCard key={room.name + index} index={index}>
             <div className="p-2">
               <h4 className="text-lg font-bold text-primary mb-6">
-                {room.name} 🎬 • {room.format} • {room.language}
+                {formatRoomString(room)} 🎬
               </h4>
               <div className="flex flex-wrap gap-4">
                 {room.sessions.map((time, index) => (
                   <Button
-                    key={time + index + room.name}
-                    onClick={() => onSelect({ time, room: `${room.name} • ${room.format} • ${room.language}` })}
+                    key={`${room.name}-${time}-${index}`}
+                    onClick={() => onSelect({ time, room: formatRoomString(room) })}
                     className="px-4 py-2 text-base rounded-xl border border-purple-300 bg-white hover:bg-purple-50 transition text-primary"
                   >
                     {time} 🕒
