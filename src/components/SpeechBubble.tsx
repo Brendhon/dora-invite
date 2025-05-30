@@ -22,14 +22,17 @@ export default function SpeechBubble({
   const completed = useRef(false);
 
   useEffect(() => {
+    // Reset the animation
     let i = 1;
     setDisplayedText("");
     completed.current = false;
 
+    // Set the interval
     const interval = setInterval(() => {
       setDisplayedText(text.slice(0, i));
       i++;
 
+      // Check if the animation has completed
       if (i > text.length) {
         clearInterval(interval);
         if (!completed.current) {
@@ -39,9 +42,16 @@ export default function SpeechBubble({
       }
     }, speed);
 
+    // When the component unmounts
     return () => {
+      // Clear the interval
       clearInterval(interval);
+
+      // Reset the completed state
       completed.current = true;
+
+      // Reset the animation
+      setDisplayedText("");
     };
   }, [text, speed]);
 
