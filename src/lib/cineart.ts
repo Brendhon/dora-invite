@@ -15,6 +15,8 @@ export async function getCinemaSessions(): Promise<Movie[]> {
   const $ = cheerio.load(data);
   const rawJson = $('cinema-prog').attr(':cinemas');
   if (!rawJson) throw new Error('Data not found in the page');
+  
+  console.log('Scraping Cineart Serra Sul');
 
   const jsonData = JSON.parse(rawJson.replace(/&quot;/g, '"'));
   const [dayKey] = Object.keys(jsonData);

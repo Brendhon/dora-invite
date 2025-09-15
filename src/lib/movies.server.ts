@@ -10,11 +10,17 @@ export async function readCachedMovies(): Promise<Movie[] | null> {
     // Read the cached movie sessions from the JSON file
     const raw = await fs.readFile(DATA_PATH, 'utf-8');
 
+    console.log('Reading cached movies');
+
     // If the file is empty or doesn't exist, return null
     if (!raw) return null;
 
+    console.log('Parsing JSON data');
+
     // Parse the JSON data
     const data: Movie[] = JSON.parse(raw);
+
+    console.log('Checking if the data has valid dates');
 
     // Check if the data has valid dates
     return hasValidDates(data) ? data : null;

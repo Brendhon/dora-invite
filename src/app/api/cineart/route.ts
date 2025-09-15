@@ -8,7 +8,10 @@ export async function GET() {
     const cached = await readCachedMovies();
 
     // If cache is valid, return cached data
-    if (cached) return NextResponse.json(cached);
+    if (cached) {
+      console.log('Using cached movies');
+      return NextResponse.json(cached);
+    }
 
     // If cache is not valid or doesn't exist, fetch fresh data
     const fresh = await getCinemaSessions();
