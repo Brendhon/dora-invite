@@ -1,52 +1,14 @@
 [
   {
-    "title": "Missão Impossível – O Acerto Final",
+    "title": "Invocação do Mal 4: O Ultimo Ritual",
     "genre": [
-      "Ação",
-      "Aventura"
+      "Terror"
     ],
-    "ageRating": 14,
+    "ageRating": 16,
     "dates": [
-      "29/05/2025",
-      "30/05/2025",
-      "31/05/2025",
-      "01/06/2025",
-      "02/06/2025",
-      "03/06/2025"
-    ],
-    "rooms": [
-      {
-        "name": "Sala 04",
-        "format": "2D",
-        "language": "Dublado",
-        "sessions": [
-          "14:00",
-          "17:20"
-        ]
-      },
-      {
-        "name": "Sala 04",
-        "format": "2D",
-        "language": "Legendado",
-        "sessions": [
-          "20:40"
-        ]
-      }
-    ]
-  },
-  {
-    "title": "Lilo & Stitch",
-    "genre": [
-      "Aventura"
-    ],
-    "ageRating": 10,
-    "dates": [
-      "29/05/2025",
-      "30/05/2025",
-      "31/05/2025",
-      "01/06/2025",
-      "02/06/2025",
-      "03/06/2025"
+      "15/09/2025",
+      "16/09/2025",
+      "17/09/2025"
     ],
     "rooms": [
       {
@@ -54,47 +16,33 @@
         "format": "2D",
         "language": "Dublado",
         "sessions": [
-          "14:20",
-          "16:40",
-          "19:00",
+          "13:15",
+          "15:55",
+          "18:35",
           "21:15"
         ]
       },
       {
-        "name": "Sala 02",
+        "name": "Sala 04",
         "format": "2D",
         "language": "Dublado",
         "sessions": [
-          "14:00",
-          "16:20",
-          "18:40",
-          "21:00"
-        ]
-      },
-      {
-        "name": "Sala 03",
-        "format": "3D",
-        "language": "Dublado",
-        "sessions": [
-          "14:30",
-          "16:50"
+          "13:40",
+          "18:10"
         ]
       }
     ]
   },
   {
-    "title": "Premonição 6: Laços de sangue",
+    "title": "A Sogra Perfeita 2",
     "genre": [
-      "Terror"
+      "Comédia"
     ],
-    "ageRating": 18,
+    "ageRating": 12,
     "dates": [
-      "29/05/2025",
-      "30/05/2025",
-      "31/05/2025",
-      "01/06/2025",
-      "02/06/2025",
-      "03/06/2025"
+      "15/09/2025",
+      "16/09/2025",
+      "17/09/2025"
     ],
     "rooms": [
       {
@@ -102,25 +50,24 @@
         "format": "2D",
         "language": "Dublado",
         "sessions": [
+          "15:25",
+          "17:20",
+          "19:15",
           "21:10"
         ]
       }
     ]
   },
   {
-    "title": "Confinado",
+    "title": "O Rei da Feira",
     "genre": [
-      "Ação",
-      "Suspense"
+      "Comédia"
     ],
-    "ageRating": 16,
+    "ageRating": 14,
     "dates": [
-      "29/05/2025",
-      "30/05/2025",
-      "31/05/2025",
-      "01/06/2025",
-      "02/06/2025",
-      "03/06/2025"
+      "15/09/2025",
+      "16/09/2025",
+      "17/09/2025"
     ],
     "rooms": [
       {
@@ -128,7 +75,68 @@
         "format": "2D",
         "language": "Dublado",
         "sessions": [
-          "19:10"
+          "13:30"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Demon Slayer: Kimetsu no Yaiba - Castelo Infinito",
+    "genre": [
+      "Animação"
+    ],
+    "ageRating": 18,
+    "dates": [
+      "15/09/2025",
+      "16/09/2025",
+      "17/09/2025"
+    ],
+    "rooms": [
+      {
+        "name": "Sala 02",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "14:20",
+          "20:40"
+        ]
+      },
+      {
+        "name": "Sala 02",
+        "format": "2D",
+        "language": "Legendado",
+        "sessions": [
+          "17:30"
+        ]
+      },
+      {
+        "name": "Sala 04",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "20:50"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Toy Story - 30 Anos",
+    "genre": [
+      "Animação"
+    ],
+    "ageRating": "L",
+    "dates": [
+      "15/09/2025",
+      "16/09/2025",
+      "17/09/2025"
+    ],
+    "rooms": [
+      {
+        "name": "Sala 04",
+        "format": "2D",
+        "language": "Dublado",
+        "sessions": [
+          "16:20"
         ]
       }
     ]
