@@ -16,9 +16,6 @@ export async function GET() {
     // If cache is not valid or doesn't exist, fetch fresh data
     const fresh = await getCinemaSessions();
 
-    // Log that we are using fresh data
-    console.log('Using fresh data from Cineart');
-
     // Return the fresh data
     return NextResponse.json(fresh);
   } catch (err) {
