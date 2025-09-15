@@ -11,7 +11,23 @@ const BASE_URL = 'https://www.cineart.com.br/cinema/cineart-serra-sul';
  * @throws {Error} - If data is not found in the page
  */
 export async function getCinemaSessions(): Promise<Movie[]> {
-  const { data } = await axios.get(BASE_URL);
+  const { data } = await axios.get(BASE_URL, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+      'Accept-Language': 'pt-BR,pt;q=0.9,en;q=0.8',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'DNT': '1',
+      'Connection': 'keep-alive',
+      'Upgrade-Insecure-Requests': '1',
+      'Sec-Fetch-Dest': 'document',
+      'Sec-Fetch-Mode': 'navigate',
+      'Sec-Fetch-Site': 'none',
+      'Cache-Control': 'max-age=0',
+    },
+    timeout: 15000,
+    maxRedirects: 5,
+  });
   const $ = cheerio.load(data);
   const rawJson = $('cinema-prog').attr(':cinemas');
   if (!rawJson) throw new Error('Data not found in the page');
